@@ -1,0 +1,331 @@
+/* 我要投资-定活通 */
+.sl_ljjy{background: #fff;padding: 20px 30px;margin: 30px 0;overflow: hidden;}
+.sl_ljjy li{margin-right: 80px;float: left;}
+.sl_jljeo dt{float: left;margin-right: 20px;}
+.sl_jljeo dd{float: left;}
+.sl_jljeo dd span{font-size: 30px;color: #e7141a;font-weight: bold;}
+.sl_jljeo dd p{font-size: 15px;color: #888;}
+/* box */
+.box2{background:#fff;border:1px solid #d3d3d3;margin-bottom: 30px;}
+.tab_menu2{overflow:hidden;background-color: #f7f7f7;border-top: 5px solid #e7141a;}
+.tab_menu2 li{width:130px;float:left;height:60px;line-height:60px;color:#888;background:#f7f7f7;text-align:center;cursor:pointer;font-size: 18px;}
+.tab_menu2 li.current{color:#444;background:#fff;}
+.tab_menu2 li a{color:#fff;text-decoration:none;}
+.tab_menu2 li.current a{color:#333;}
+/* .tab_box2{ overflow: hidden; padding-bottom: 60px;} */
+.tab_box2 .hide{display:none;}
+.sl_dht_r12t li{width: 249px;margin-left: 12px;margin-bottom: 42px;}
+
+
+/* 我要投资-投资项目 */
+.screen ul li {
+	float:left;
+	padding:0 15px;
+	margin:10px 0px 10px 0px;
+	text-align:center;
+	font-size:15px;
+	color:#888;
+	display:block;
+}
+
+.screen ul {
+	line-height:25px;
+	overflow:hidden;
+}
+.screen ul li a:hover {
+    color: #fff;
+    background: #e7141a;
+    border-radius: 5px;
+    display: block;
+   padding:0 15px;
+    height:29px;
+	line-height:29px;
+}
+.screen .cou {
+	color:#fff;
+	background:#e7141a;
+	border-radius:5px;
+	padding:0 15px;
+	display:block;
+	height:29px;
+	line-height:29px;
+}
+.screen ul li a {
+	color:#888;
+	text-align:center;
+	font-size:14px;
+	padding:0 15px;
+	height:29px;
+	line-height:29px;
+}
+.jpadding20_a{margin-left: 0;margin-right: 0;padding-left: 36px;}
+.sl_br{font-size: 24px;}
+.sl_yuan1{font-size: 24px;}
+.Jajs-icl-con1 li{    width: 13%;border-right: 1px dashed #ccc;margin-right: 34px;}
+.sl_bf_b1{font-size: 16px;}
+.Jajs-iclc-frist1{width: 14%!important;margin-right: 20px;}
+.sl_lekz{position: relative;left: -14px;}
+.sl_dqhb{width: 290px!important;border-right: none!important;}
+.sl_dqhb3{width: 14%!important;}
+.sl_liji{margin-top: 10px;margin-right: -34px;}
+
+
+/* 我要投资_定活通详情页 */
+.invest_loans{margin-top: 30px; border:1px solid #d8d8d8;}
+.invest_loans_top{height: 52px;background-color: #f75c5c; line-height:52px;    padding: 0 20px;}
+.invest_loans_top h2{font-size: 22px;color: #fff;font-weight: normal;float: left;}
+.invest_loans_bottom{height: 298px;background-color: #fff;}
+.invest_loans_left{width: 750px;min-height: 298px;float: left; border-right:1px solid #e6e6e6;}
+.invest_loans_left h4{margin-top: 20px;margin-bottom: 10px;}
+.invest_loans_left h5{font-size: 14px;margin-bottom: 24px;}
+.invest_loans_left .ILL_frist img{ float:left;}
+.invest_loans_left .ILL_frist dl{ float:left; width:543px; margin-top:34px;}
+.invest_loans_left .ILL_frist dl dd{ float:left; width:21%; min-height:58px; text-align:left; border-right:1px dashed #d8d8d8;    padding-left: 40px;}
+.invest_loans_left .ILL_frist dl dd span{ font-size:24px;font-weight:bold; }
+.invest_loans_left .ILL_second dd{ float:left; width:49%;}
+.invest_loans_left .ILL_second dd p{ width:100%; height:20px; overflow:hidden; margin-top:22px;}
+.invest_loans_left .ILL_second dd p span{color:#999; }
+.ILL_frist{border-bottom: 1px solid #e5e5e5;height: 100%;overflow: hidden;padding: 30px 20px;}
+
+.percent_small5{
+               width:130px;
+			   height:130px;
+			   margin:0 auto;
+			   margin-left: 36px;
+			   }
+.percent_small5 div{display:block;
+                  width:46px; 
+				  overflow:hidden;
+				  margin:0;
+                  }	
+.percent_small5 font{text-align:center;
+			        line-height:15px;
+			        color:#86929a;
+			        font-size:14px;
+			        text-indent:0;
+					display:block;
+					position:relative;
+					z-index:999;
+					width:46px;
+					overflow:hidden;
+					top:-37px;
+					left:5px;
+					}
+.percent_small5 b {
+    font-weight: normal;
+    position: relative;
+    top: -77px;
+    color: #999;
+    left: 49px;
+}
+.ILL_second{padding: 0 50px;}
+.sl_ywen{color: #999;}
+.slfanb{float: right;font-size: 16px;}
+.invest_loans_right{width: 287px;float: left;padding: 30px;}
+
+
+.invest_loans_right .money_con p{
+	float: left;
+	color: #999;
+	font-size: 15px;
+	line-height: 27px;
+}
+.sl_dlfg{
+	float: right;
+	font-size: 15px;
+	line-height: 60px;
+	color: #f78182!important;
+	width: 110px;
+	height: 23px;
+	border: 1px solid #f78182;
+	display: block;
+	line-height: 23px;
+	text-align: center;
+}
+
+.invest_loans_right .input input{
+	border: 1px solid #dddddd;
+	background: #f5f6fa;
+	width: 265px;
+	height: 37px;
+	padding: 3px 10px 3px 10px;
+	
+	font-size: 16px;
+	line-height: 37px;
+}
+.invest_loans_right .add_input input{
+	width: 225px;
+	border-right: 0;
+	float: left;
+}
+.add_input .balan{
+	width: 41px;
+	text-align: center;
+	background: #eaeaea;
+	color: #605e5e;
+	font-size: 16px;
+	display: block;
+	float: left;
+	height: 45px;
+	line-height: 45px;
+}
+.join_btn{
+	height: 50px;
+	line-height: 50px;
+	font-size: 18px;
+	background: #f75c5c;
+	display: block;
+	text-align: center;
+	margin: 22px 0 0;
+	font-weight: bold;
+}
+.sl_jymle{margin-top: 20px;}
+.money_con{height: 50px;}
+
+
+ /* box */
+.box3{margin:30px auto 0;background:#fff;border:1px solid #d3d3d3;margin-bottom: 30px;}
+.tab_menu3{overflow:hidden;background: #f7f7f7;}
+.tab_menu3 li{width:160px;float:left;height:56px;line-height:56px;color:#999;background:#f7f7f7;text-align:center;cursor:pointer;font-size: 18px;}
+.tab_menu3 li.current{color:#444;background:#fff;border-top: 3px solid #f75c5c;}
+.tab_menu3 li a{color:#fff;text-decoration:none;}
+.tab_menu3 li.current a{color:#333;}
+.tab_box3 .hide{display:none;}
+
+.sl_detial1 li i{
+	float: left;
+	width: 114px;
+	text-align: right;
+	font-size: 15px;
+	color: #999999;
+	margin-right: 28px;
+	padding-left: 30px;
+	font-style: normal;
+}
+.sl_detial1 li span{
+	float: left;
+	padding-right: 30px;
+	font-size: 15px;
+	color: #666666;
+}
+.sl_detial1 li {height:50px;line-height: 50px; }
+.pro_num tr th{
+	line-height: 44px;
+	text-align: center;
+	color: #666666;
+	font-size: 16px;
+	background: #f3f3f3;
+	font-weight: normal;
+}
+.pro_num tr td{
+	line-height: 44px;
+	text-align: center;
+	color: #666666;
+	font-size: 14px;
+}
+.pro_num{width: 100%;}
+
+
+/* 我要投资详情页 */
+.nr1_jindutiao{ margin: 36px 31px 0; }
+.nr1_jindutiao span{float: left;}
+.slbfb4 p{float: right;}
+.slbfb4{margin-top: 20px;font-size: 16px;}
+.jdt_wai{height:6px; width:687px; background:#d2d2d2;float:left;margin-bottom: 10px;}
+.jdt_neir{background:#ffad1d; width:80%; height:6px; border-radius:10px;}
+.slbfb4 p b{font-weight: normal;color: #f75c5c;}
+.ILL_frist11 dl dd{padding-left: 32px!important;width: 18%!important;}
+.ILL_frist11 dl{width: 712px!important;}
+.money_con p b{font-weight: normal;color: #f17072;font-size: 19px;}
+
+
+.tab_box3 li h3{margin-top: -4px;font-size: 16px;color: #555;margin-bottom: 20px;}
+table.gridtable {
+    font-family: verdana,arial,sans-serif;
+    font-size:14px;
+    color:#666;
+    border-width: 1px;
+    border-color: #dadada;
+    border-collapse: collapse;
+    width: 100%;
+    height: 133px;
+}
+table.gridtable th {
+    border-width: 1px;
+    padding: 8px 45px;
+    border-style: solid;
+    border-color: #dadada;
+    font-weight: normal;
+}
+table.gridtable td {
+    border-width: 1px;
+    padding: 8px 30px;
+    border-style: solid;
+    border-color: #dadada;
+}
+table.gridtable th strong{
+    color: #0075a6;
+}
+table.gridtable td strong{
+    color: #0075a6;
+    font-weight: normal;
+}
+.tab_box3 li p{line-height: 30px;}
+.invest_Loan_details{height: 149px;background-color: #fbfbfb;padding:18px 14px 18px;}
+.invest_about li{float: left;margin-top: 0;margin-left: 13px;}
+.invest_about li img{border:5px solid #ccc;}
+
+.invest_regarding{height: 274px;}
+.invest_regarding_top{height: 35px;background-color: #ecedee;line-height: 35px;}
+.invest_regarding_top ul li{float: left;margin-top: 0; width:157px;font-size: 12px;color: #000; text-align:center;}
+.invest_regarding_bottom{height: 45px;line-height: 45px;}
+.invest_regarding_bottom ul li{float: left;margin-top: 0; width:157px;font-size: 12px;color: #000; text-align:center;}
+.invest_regarding_bottom ul li img{margin-top: 8px; margin-left:10PX;}
+.invest_regarding_bottom ul li span{margin-left: -60px;font-size: 14px;color: #000;}
+.invest_regarding_bottom ul li strong{color: #f3485a;}
+.invest_regarding_bottom ul a:hover li{background-color: #FEFDF9;}
+.tab_box3 li img{float: left;margin-right: 10px;}
+.tab_box3 li{overflow:hidden;}
+.tab_box13 li{overflow:hidden;margin-top: 40px;}
+.tab_box13{padding:0!important;}
+.tab_box3{padding: 30px;}
+
+
+
+.blk_29 { padding:10p 0px; OVERFLOW: hidden; ZOOM: 1; POSITION: relative; height:156px;}
+.blk_29 .LeftBotton {	BACKGROUND: url(../images/ts.png) no-repeat 0px 0px; LEFT: -1px; FLOAT: left; WIDTH: 19px; CURSOR: pointer; POSITION: absolute; TOP: 48px; HEIGHT: 36px}
+.blk_29 .RightBotton {	RIGHT: -2px; BACKGROUND: url(../images/ts.png) no-repeat -19px 0px; FLOAT: right; WIDTH: 19px; CURSOR: pointer; POSITION: absolute; TOP: 48px; HEIGHT:36px}
+.blk_29 .Cont {	MARGIN: 0px auto; OVERFLOW: hidden; WIDTH: 1012px!important; PADDING-TOP: 5px; }
+.blk_29 .box{	FLOAT: left; TEXT-ALIGN: center; position:relative;;margin-right:29px;width: 177px;}
+.blk_29 .box IMG {	border:3px solid #f0f0f0;  DISPLAY: block;  BACKGROUND: #fff;  MARGIN: 0px auto;}
+.blk_29 .box P {display:block;  position:absolute; top:87px; background:#242424; opacity:0.6; line-height:30px; text-align:center; color:#fff; z-index:999; font-size:14px; font-weight:bold; width:97.5%; left:3px;}
+.rollphotos {	MARGIN-TOP: 10px}
+
+
+
+
+.nr1_jindutiao1 p{float: left;margin-right: 87px;}
+.nr1_jindutiao1 p span{color: #999;}
+.nr1_jindutiao1{margin-top: 65px;}
+
+/* 登录 */
+.sl_dl_l{margin: 75px auto;overflow: hidden;}
+.sl_dl_l img{float: left;}
+.sl_dl_l_r{width: 438px;height:650px;background: #fff;float: right;}
+.sl_dl_l_r h1{width: 438px;text-align: center;height: 77px;line-height: 77px;border-bottom: 1px solid #e5e5e5;font-size: 24px;}
+.sl_srk{padding: 53px 70px;}
+.sl_yhm{width: 276px;height: 48px;border: 1px solid #e5e5e5;line-height: 48px;padding-left: 20px;}
+.sl_srk li{height: 65px;text-align: center;}
+.sl_ljdl{width: 300px;height: 50px;line-height: 50px;background: #f75c5c;display: block;text-align: center;font-size: 16px;margin-top: 10px;}
+.sl_wjml{color: #999!important;position: relative;top: 10px;}
+.sl_wjml b{color:#f75c5c;font-weight:normal;}
+.sl_huo p{    width: 39px;
+    height: 30px;
+    background: #fff;
+    text-align: center;
+    line-height: 30px;
+    position: absolute;
+    top: -13px;
+    left: 129px;}
+.sl_huo{border-bottom:1px solid #e5e5e5;height:1px;position:relative;}
+.sl_zczhy{width: 298px;height: 48px;line-height: 48px;border: 1px solid #f75c5c;text-align: center;display: block;}

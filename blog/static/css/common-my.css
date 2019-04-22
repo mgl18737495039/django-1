@@ -1,0 +1,619 @@
+body {
+	background: #f6f6f6;
+	font-size: 12px;
+	font-family: 宋体, 微软雅黑, sans-serif;
+	font-weight: normal;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+html, body, ul, li, div, img {
+	margin: 0px;
+	padding: 0px;
+}
+a, img {
+	border: 0;
+}
+a, a:visited {
+	color: #5e5e5e;
+	text-decoration: none;
+}
+a:hover {
+	color: #333;
+	text-decoration: none;
+}
+ul {
+	list-style: none;
+}
+li {
+	list-style: none;
+	display: inline-block;
+ *display:inline;
+}
+.inline {
+	display: inline-block;
+	zoom: 1;
+ *display:inline;
+}
+.bodyContent {
+	width: 100%;
+	margin: 0em auto;
+	overflow: hidden;
+	position: relative;
+	padding-top: 160px;
+}
+.maxContent {
+	width: 100%;
+	position: relative;
+}
+.minContent {
+	width: 1000px;
+	margin: 0em auto;
+	position: relative;
+}
+.header {
+	height: 135px;
+	background: #030303;
+	overflow: hidden;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	z-index: 100;
+	text-align: center;
+}
+.headerInfo {
+	margin-top: 36px;
+	position: relative;
+}
+.headerInfo ul {
+	position: absolute;
+	right: 0em;
+	top: 28px;
+	width: 800px;
+}
+.headerInfo ul li {
+	float: left;
+	width: 16.666666666666667%;
+	text-align: center;
+	font-size: 15px;
+}
+.headerInfo ul li a {
+	color: #fff;
+}
+.headerInfo ul li a.navFocus {
+	color: #D5222B;
+}
+.headerInfo ul li a:hover {
+	color: #D5222B;
+}
+.pageDom {
+	width: 100%;
+	height: 100%;
+}
+.pageDom li.page {
+	float: left;
+	position: relative;
+	z-index: 8;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.pageDom li.page img.bg {
+	position: absolute;
+	left: 0em;
+	top: 0em;
+	z-index: 8;
+}
+.pageDom li.page .infoDom {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0em;
+	top: 0em;
+	z-index: 10;
+}
+.pageDom li.page .infoDom .info {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	padding-top: 135px;
+	width: 100%;
+	height: 100%;
+}
+.indexPageContent, .indexPageContent li {
+	width: 100%;
+	height: 100%;
+}
+.indexPageContent li {
+	position: absolute;
+	left: 0em;
+	top: 0em;
+	text-align: center;
+	vertical-align: middle;
+	opacity: 0;
+	display: none;
+}
+.pageDom li.page .contentDom .infoDom {
+	background: url(../img/imgBg.png);
+}
+.indexPageContent li:first-child {
+	opacity: 1;
+	display: block;
+}
+.indexPageContent li img {
+	max-width: 100%;
+	max-height: 100%;
+	vertical-align: middle;
+}
+.pageBox {
+	position: absolute;
+	right: 25px;
+	bottom: 33px;
+	z-index: 16;
+}
+.pageBox div {
+	width: 11px;
+	height: 11px;
+	border-radius: 50%;
+	background: #C4C4C4;
+	display: inline-block;
+*display:inline;
+	zoom: 1;
+	margin-left: 9px;
+	cursor: pointer;
+}
+.indexOper {
+	margin: 77px auto 0px auto;
+}
+.indexOper ul {
+	width: 100%;
+	height: 128px;
+	margin-top: -78px;
+}
+.indexOper ul li {
+	text-align: left;
+	float: left;
+	position: relative;
+	width: 78px;
+	text-align: center;
+	margin: 0px 75px 0px 0px;
+	padding-top: 95px;
+	cursor: pointer;
+}
+.indexOper ul li:last-child {
+	margin-right: 0em;
+}
+.indexOper .zz {
+	position: absolute;
+	top: -9px;
+	left: -9px;
+	opacity: 0;
+}
+.jin {
+	margin: 24px auto 0px 89px;
+	cursor: pointer;
+}
+.contentDom {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.oper {
+	position: absolute;
+	right: 24px;
+	top: 165px;
+	z-index: 30;
+	vertical-align: top;
+}
+.oper .back {
+	cursor: pointer;
+}
+.infoContentDom {
+	position: absolute;
+	width: 100%;
+	left: 0em;
+	top: 0em;
+	z-index: 20;
+	overflow: hidden;
+	background: #fff;
+	display: none;
+}
+.page1InfoDom {
+	width: 756px;
+	height: 417px;
+	background: url(../img/info/bg.png) no-repeat;
+	text-align: center;
+	margin: 0em auto;
+}
+.page1Oper {
+	color: #fff;
+	padding: 21px 0px 24px;
+	text-align: center;
+	width: 100%;
+}
+.page1Oper div {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	display: inline-block;
+*display:inline;
+	zoom: 1;
+	line-height: 20px;
+	margin: 0em 2px;
+	cursor: pointer;
+	text-align: center;
+}
+.page1Oper div.focus {
+	background: #595959;
+}
+.leftPageOper, .rightPageOper {
+	position: absolute;
+	top: 50%;
+	z-index: 29;
+	margin-top: 43px;
+	cursor: pointer;
+}
+.leftPageOper {
+	left: 15px;
+}
+.rightPageOper {
+	right: 15px;
+}
+.infoPage {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0em;
+	top: 0em;
+}
+.infoPage li.infoInfoDom {
+	width: 100%;
+	height: 100%;
+	float: left;
+	z-index: 20;
+	position: relative;
+}
+.page2InfoDom {
+	width: 757px;
+	height: 315px;
+	background: url(../img/info/bg.png) no-repeat;
+	margin: 0em auto;
+	position: relative;
+}
+.page2InfoDom > div {
+	display: none;
+}
+.page2InfoDom > div:first-child {
+	display: block;
+}
+.page2Oper {
+	margin-top: 15px;
+}
+.page2Oper img {
+	margin-right: 1px;
+	cursor: pointer;
+}
+.page2_1InfoOper {
+	width: 100%;
+	position: absolute;
+	left: 0em;
+	bottom: 16px;
+	text-align: center;
+}
+.page2_1InfoOper div {
+	display: inline-block;
+*display:inline;
+	zoom: 1;
+	cursor: pointer;
+	height: 20px;
+	margin-left: -7px;
+}
+.page2_1InfoOper div:first-child {
+	width: 43px;
+	background: url(../img/info/info1/in2/nav/t_01.png) no-repeat 0px -19px;
+}
+.page2_1InfoOper div:first-child+div {
+	width: 150px;
+	background: url(../img/info/info1/in2/nav/t_02.png) no-repeat;
+}
+.page2_1InfoOper div:first-child+div+div {
+	width: 69px;
+	background: url(../img/info/info1/in2/nav/t_03.png) no-repeat;
+}
+.page2_1InfoOper div:last-child {
+	width: 43px;
+	background: url(../img/info/info1/in2/nav/t_04.png) no-repeat;
+}
+.page3InfoOper {
+	margin: 35px 0px;
+}
+.page3InfoOper img {
+	cursor: pointer;
+}
+.page4Info li {
+	cursor: pointer;
+}
+.page4LiInfoDom {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0em;
+	top: 0em;
+	z-index: 10000;
+	display: none;
+}
+.page4LiInfoDom .pageZz {
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: 0.95;
+	position: absolute;
+	left: 0em;
+	top: 0em;
+	z-index: 10001;
+}
+.page4LiInfoDom .page4LiInfoContent {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0em;
+	top: 0em;
+	z-index: 10002;
+}
+.page4LiInfoDom .page4LiInfoContent div.pageInfo {
+ width:l00%;
+	height: 100%;
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+.pageInfoUlDom {
+	width: 918px;
+	height: 440px;
+	margin: 0em auto;
+	position: relative;
+}
+.pageInfoUlDom .pageLeft, .pageInfoUlDom .pageRight {
+	position: absolute;
+	top: 50%;
+	margin-top: -44px;
+	cursor: pointer;
+}
+.pageInfoUlDom .pageLeft {
+	left: -72px;
+}
+.pageInfoUlDom .pageRight {
+	right: -72px;
+}
+.pageInfoUl {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+}
+.pageInfoUl ul {
+	position: absolute;
+	left: 0em;
+	top: 0em;
+	width: 100%;
+	height: 100%;
+}
+.pageInfoUl ul li {
+	width: 100%;
+	height: 100%;
+	float: left;
+	text-align: center;
+}
+.pageInfoUl ul li img {
+	max-width: 100%;
+	max-height: 100%;
+}
+.pageCount {
+	color: #A4A5A4;
+	font-size: 14px;
+	margin-top: 14px;
+}
+.pageInfoRightTitle {
+	background: url(../img/nav/titleBg.png) no-repeat top left;
+	padding: 8px 8px 0px 15px;
+	display: none;
+}
+.oper .close {
+	vertical-align: top;
+	margin-top: 8px;
+	cursor: pointer;
+}
+.page5Oper {
+	position: absolute;
+	left: 0em;
+	top: 0em;
+	cursor: pointer;
+}
+.page5Info {
+	position: relative;
+	width: 1165px;
+	height: 574px;
+	margin: 0em auto;
+}
+.page6Info {
+	position: relative;
+	width: 1018px;
+	margin: 0em auto;
+	height: 622px;
+}
+.page6Info .page6Oper {
+	position: absolute;
+	right: 0em;
+	top: 77px;
+}
+.page6Oper > div {
+	margin-bottom: -55px;
+	position: relative;
+	text-align: right;
+	cursor: pointer;
+	position: relative;
+}
+.page6Oper > div div {
+	vertical-align: middle;
+	top: 30%;
+	position: absolute;
+	right: -3em;
+	font-size: 18px;
+	font-weight: 700;
+	color: #c7c7c7;
+}
+.page6Oper > div:last-child div {
+	color: #464646;
+}
+.page6InfoContent {
+	text-align: left;
+	width: 900px;
+	height: 622px;
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+.page6InfoContent > div {
+	position: relative;
+	display: none;
+}
+.page6InfoContent > div:last-child {
+	display: block;
+}
+.page6InfoContent .page6InfoOper {
+	position: absolute;
+	left: 0em;
+	top: 0em;
+	width: 124px;
+	height: 39px;
+	cursor: pointer;
+}
+.page6InfoContent .page6InfoOper img {
+	display: none;
+}
+.page7InfoContent {
+	margin: 38px auto 92px auto;
+	width: 1140px;
+	height: 238px;
+	position: relative;
+	overflow: hidden;
+}
+.page7InfoContent ul {
+	position: absolute;
+	left: 0em;
+	top: 0em;
+}
+.page7InfoContent li {
+	border: 5px solid #D1D1D1;
+	cursor: pointer;
+	float: left;
+	margin: 0px 2px;
+}
+.page7PreOper, .page7NextOper {
+	cursor: pointer;
+}
+.page8Info {
+	width: 816px;
+	position: relative;
+	margin: 0em auto;
+}
+.page8InfoContent {
+	width: 816px;
+	height: 50px;
+	position: relative;
+	overflow: hidden;
+}
+.page8InfoContentDom {
+	width: 816px;
+	height: 385px;
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+.page8InfoContent ul {
+	width: 100%;
+	position: absolute;
+	left: 0em;
+	top: 0em;
+}
+.page8InfoContent ul li {
+	width: 100px;
+	height: 50px;
+	float: left;
+	margin-right: 2px;
+	cursor: pointer;
+}
+.page8InfoContent ul li:last-child {
+	margin-right: 0px;
+}
+.page8InfoContent ul li img {
+	width: 100%;
+	height: 100%;
+}
+.page8LeftOper, .page8RightOper {
+	position: absolute;
+	bottom: 10px;
+	cursor: pointer;
+}
+.page8LeftOper {
+	left: -30px;
+}
+.page8RightOper {
+	right: -30px;
+}
+.rightOperDom {
+	position: fixed;
+	right: 0em;
+	top: 250px;
+	width: 30px;
+	z-index: 10;
+}
+.page6InfoOperInfo {
+	background: url(../img/info/info5/hx/infoBg_03.png);
+	width: 612px;
+	height: 415px;
+	overflow: hidden;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -215px 0px 0px -306px;
+	z-index: 20;
+	cursor: auto;
+	display: none;
+}
+.page6InfoOperInfo .page6content {
+	width: 602px;
+	height: 353px;
+	background: #fff;
+}
+.page6InfoOperInfo .page6content > img {
+	max-width: 100%;
+	max-height: 100%;
+}
+.page6InfoOperInfoTitle {
+	width: 580px;
+	height: 48px;
+	overflow: hidden;
+	display: table-cell;
+	text-align: left;
+	vertical-align: middle;
+	padding-left: 22px;
+	position: relative;
+	background: #fff;
+}
+.page6InfoOperInfoTitle > img {
+	max-width: 100%;
+}
+.page6InfoOperInfoTitle .page6InfoClose {
+	position: absolute;
+	right: 14px;
+	top: 13px;
+	cursor: pointer;
+}
+.page7Next {
+	position: absolute;
+	margin-top: -80px;
+	margin-left: -40px;
+	cursor: pointer;
+	left: 50%;
+}
