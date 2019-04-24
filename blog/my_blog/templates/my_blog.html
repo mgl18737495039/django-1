@@ -58,13 +58,14 @@
  						  </button>
  						  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
  							<div class="navbar-nav">
- 								
- 							  <a class="nav-item nav-link active" href="{% url 'core_1:index'%}"><button type="button" class="btn btn-danger" style="margin-left: 50px; width: 100px;">首页</button></a>
- 							  <a class="nav-item nav-link" href="#"><button type="button" class="btn btn-danger"style="margin-left: 50px; width: 100px;">IT</button></a>
- 							  <a class="nav-item nav-link" href="#"><button type="button" class="btn btn-danger"style="margin-left: 50px; width: 100px;">体育</button></a>
- 							  <a class="nav-item nav-link" href="#"><button type="button" class="btn btn-danger"style="margin-left: 50px; width: 100px;">军事</button></a>
- 							  <a class="nav-item nav-link" href="#"><button type="button" class="btn btn-danger"style="margin-left: 50px; width: 100px;">旅游</button></a>
- 							  <a class="nav-item nav-link" href="#"><button type="button" class="btn btn-danger"style="margin-left: 50px; width: 100px;">美食</button></a>
+ 								<a class="nav-item nav-link active" href="{% url 'core_1:index'%}"><button type="button" class="btn btn-danger" style="margin-left: 50px; width: 100px;">首页</button></a>
+
+							  {% for i in sorts%}
+								<a class="nav-item nav-link" href="#"><button type="button" class="btn btn-danger"style="margin-left: 50px; width: 100px;">{{i.sort_name}}</button></a>
+								{%empty%}
+								没有分类
+								{%endfor%}
+
 
  							  <a class="nav-item nav-link" href="{% url 'my_blog:my_blog' %}"><button type="button" class="btn btn-danger"style="margin-left: 50px; width: 100px;">我的</button></a>
 							  	<a href=""><h3 style="display: block;margin-left: 50px;">{{request.user.user_file.nickname}}</h3></a>
@@ -145,28 +146,29 @@
 					<div class="card-header"><a href="" id=""><h5 >{{i.article_name}}</h5></a></div>
 				 				{% if i.article_img %}
 
-								<img class="card-img-top" src='/{{i.article_img}}' alt="Card image cap">
+								<img class="card-img-top"style="width:50%;"  src='/{{i.article_img}}' alt="Card image cap" >
 
 
-				 				<p class="card-text">{{i.article_text}}
-								</p><a href="#" class="btn btn-primary btn-sm">查看详情</a><a href=""></a>
+				 				<p class="card-text">{{i.article_text|slice:"5:50"}} ......
+								</p><a href="{% url 'comment_user:comment_user' i.id%}" class="btn btn-primary btn-sm">查看详情</a><a href=""></a>
 				 				<ul class="blog">
 				 					<li><i class="fa fa-user-circle fa-lg"></i>：<a href="">{{i.article_user.user_file.nickname}}</a></li>
 				 					<li><i class="fa fa-calendar-check-o "></i>：<span>{{i.article_time}}</span></li>
 				 					<li><i class="fa fa-eye fa-lg"></i>：<span>{{i.article_click_volume}}</span></li>
 				 					<li><i class="fa fa-window-restore fa-lg"></i>：<a href="">{{i.article_category}}</a></li>
-									<li><i class="fa fa-envelope-o">{{i.comment_set.all.count}}</i>：<a href="">评论</a></li>
-
+									<li><i class="fa fa-envelope-o">{{i.comment_set.all.count}}</i>：评论</li>
+									<li><i class="fa fa-trash"></i>：<a href="{% url 'my_blog:del_blog' i.id%}">删除</a></li>
 				 				</ul>
 								{%else%}
-								<p class="card-text">{{i.article_text}}
-								</p><a href="#" class="btn btn-primary btn-sm">查看详情</a><a href=""></a>
+								<p class="card-text">{{i.article_text|slice:"5:50"}} ......
+								</p><a href="{% url 'comment_user:comment_user' i.id%}" class="btn btn-primary btn-sm">查看详情</a><a href=""></a>
 								<ul class="blog">
-									<li><i class="fa fa-user-circle fa-lg"></i>：<a href="">{{i.article_user}}</a></li>
-									<li><i class="fa fa-calendar-check-o "></i>：<span>{{i.article_time}}</span></li>
-									<li><i class="fa fa-eye fa-lg"></i>：<span>{{i.article_click_volume}}</span></li>
-									<li><i class="fa fa-window-restore fa-lg"></i>：<a href="">{{i.article_category}}</a></li>
-									<li><i class="fa fa-envelope-o">{{i.comment_set.all.count}}</i>：<a href="">评论</a></li>
+									<li><i class="fa fa-user-circle fa-lg"></i>：<a href="">{{i.article_user.user_file.nickname}}</a></li>
+				 					<li><i class="fa fa-calendar-check-o "></i>：<span>{{i.article_time}}</span></li>
+				 					<li><i class="fa fa-eye fa-lg"></i>：<span>{{i.article_click_volume}}</span></li>
+				 					<li><i class="fa fa-window-restore fa-lg"></i>：<a href="">{{i.article_category}}</a></li>
+									<li><i class="fa fa-envelope-o">{{i.comment_set.all.count}}</i>：评论</li>
+									<li><i class="fa fa-trash"></i>：<a href="{% url 'my_blog:del_blog' i.id%}">删除</a></li>
 
 								</ul>
 				 				{%endif%}
@@ -190,23 +192,25 @@
 							
 						</div>
 						<div class="card" style="width: 18rem;">
-						  <img class="card-img-top" src="images/head1.jpg" alt="Card image cap">
+						  <img class="card-img-top" style="width: 50px;height: 50px;" src="/{{user_file.user_img}}" alt="Card image cap">
 						  <div class="card-body">
 							<h5 class="card-title">我的名言</h5>
-							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+							<p class="card-text">{{user_file.Personal_quotes}}</p>
 						  </div>
 						  <ul class="list-group list-group-flush">
-							<li class="list-group-item"><i class="fa fa-heart"></i><span>爱好：运动</span></li>
-							<li class="list-group-item"><i class="fa fa-flask"></i><span>专业：计算机</span></li>
-							<li class="list-group-item"><i class="fa fa-anchor"></i><span>旅游博文：6-piece</span></li>
-							<li class="list-group-item"><i class="fa fa-map-pin"></i><span>美食博文：7-piece</span></li>
-							<li class="list-group-item"><i class="fa fa-life-saver"></i><span>体育博文：7-piece</span></li>
-							<li class="list-group-item"><i class="fa fa-rocket"></i><span>游戏博文：7-piece</span></li>
+
+							  <li class="list-group-item"><i class="fa fa-rocket"></i><span>昵称：{{user_file.nickname}}</span></li>
+							<li class="list-group-item"><i class="fa fa-heart"></i><span>爱好：{{user_file.hobby_user}}</span></li>
+							<li class="list-group-item"><i class="fa fa-flask"></i><span>专业：{{user_file.speciality}}</span></li>
+							<li class="list-group-item"><i class="fa fa-anchor"></i><span>年龄：{{user_file.age}}</span></li>
+							<li class="list-group-item"><i class="fa fa-map-pin"></i><span>性别：{{user_file.gender}}</span></li>
+							<li class="list-group-item"><i class="fa fa-life-saver"></i><span>电话：{{user_file.pthone}}</span></li>
+
 							<li class="list-group-item"><i class="fa fa-fighter-jet"></i><span>军事博文：7-piece</span></li>
 							
 						  </ul>
 						  <div class="shezhi">
-							  <a href=""><i class="fa fa-cog fa-2x"></i></a>
+							  <a href="{% url 'my_blog:xiugai_user'%}"><i class="fa fa-cog fa-2x"></i></a>
 							  
 						  </div>
 						</div>

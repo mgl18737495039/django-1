@@ -37,13 +37,13 @@
     							<div class="navbar-nav">
     								
     							  <a class="nav-item nav-link active" href="{% url 'core_1:index'%}"><button type="button" class="btn btn-danger" style="margin-left: 50px; width: 100px;">首页</button></a>
-    							  <a class="nav-item nav-link" href="#"><button type="button" class="btn btn-danger"style="margin-left: 50px; width: 100px;">IT</button></a>
-    							  <a class="nav-item nav-link" href="#"><button type="button" class="btn btn-danger"style="margin-left: 50px; width: 100px;">体育</button></a>
-    							  <a class="nav-item nav-link" href="#"><button type="button" class="btn btn-danger"style="margin-left: 50px; width: 100px;">军事</button></a>
-    							  <a class="nav-item nav-link" href="#"><button type="button" class="btn btn-danger"style="margin-left: 50px; width: 100px;">旅游</button></a>
-    							  <a class="nav-item nav-link" href="#"><button type="button" class="btn btn-danger"style="margin-left: 50px; width: 100px;">美食</button></a>
-    							 </div>
-    							
+
+							  {% for i in sorts%}
+								<a class="nav-item nav-link" href="#"><button type="button" class="btn btn-danger"style="margin-left: 50px; width: 100px;">{{i.sort_name}}</button></a>
+								{%empty%}
+								没有分类
+								{%endfor%}
+
     						  </div>
     	</nav>
     </div>

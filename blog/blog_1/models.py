@@ -18,10 +18,12 @@ class User_file(models.Model):
 
     age=models.IntegerField(default=0)
     nickname=models.CharField(max_length=50)
-    gender=models.CharField(max_length=5)
-    pthone=models.CharField(max_length=30)
-    hobby_user=models.TextField(default='11')
-    speciality=models.TextField(default='sdd')
+    gender=models.CharField(max_length=5,default='xxx')
+    pthone=models.CharField(max_length=30,default='xxxxx')
+    hobby_user=models.TextField(default='无')
+    speciality=models.TextField(default='无')
+    Personal_quotes=models.TextField(default='无')
+    user_img=models.FileField(upload_to='./static/images/users/',default='static/images/users/user.jpg')
     user_file = models.OneToOneField(User, on_delete=models.CASCADE)
     def sex1(self):
         return self.sex
@@ -36,7 +38,7 @@ class Article(models.Model):
     article_text=models.TextField()
     article_click_volume=models.IntegerField(default=0)
     article_img=models.FileField(upload_to='./static/images/')
-    article_category=models.CharField(max_length=100)
+    article_category=models.ForeignKey('Sort',on_delete=models.CASCADE)
 
     def __str__(self):
         return self.article_name
@@ -48,3 +50,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment_text
+class Sort(models.Model):
+    sort_name=models.CharField(max_length=40)
+

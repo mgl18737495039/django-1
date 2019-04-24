@@ -56,13 +56,15 @@
 						  </button>
 						  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 							<div class="navbar-nav">
-								
-							  <a class="nav-item nav-link active" href="{% url 'core_1:index'%}"><button type="button" class="btn btn-danger" style="margin-left: 50px; width: 100px;">首页</button></a>
-							  <a class="nav-item nav-link" href="#"><button type="button" class="btn btn-danger"style="margin-left: 50px; width: 100px;">IT</button></a>
-							  <a class="nav-item nav-link" href="#"><button type="button" class="btn btn-danger"style="margin-left: 50px; width: 100px;">体育</button></a>
-							  <a class="nav-item nav-link" href="#"><button type="button" class="btn btn-danger"style="margin-left: 50px; width: 100px;">军事</button></a>
-							  <a class="nav-item nav-link" href="#"><button type="button" class="btn btn-danger"style="margin-left: 50px; width: 100px;">旅游</button></a>
-							  <a class="nav-item nav-link" href="#"><button type="button" class="btn btn-danger"style="margin-left: 50px; width: 100px;">美食</button></a>
+								<a class="nav-item nav-link active" href="{% url 'core_1:index'%}"><button type="button" class="btn btn-danger" style="margin-left: 50px; width: 100px;">首页</button></a>
+
+							  {% for i in sorts%}
+								<a class="nav-item nav-link" href="{% url 'core_1:fenlei' i.id%}"><button type="button" class="btn btn-danger"style="margin-left: 50px; width: 100px;">{{i.sort_name}}</button></a>
+								{%empty%}
+								没有分类
+								{%endfor%}
+
+
 
 								{% if username %}
 
@@ -146,33 +148,34 @@
 				    
 			
 			<div class="cen_1_1">
+				{%if id%}
 				{% for i in art %}
 				<div class="blogbody">
-					<div class="card-header"><a href="" id=""><h5 >{{i.article_name}}</h5></a></div>
+					<div class="card-header"><h5 >{{i.article_name}}</h5></div>
 				 				{% if i.article_img %}
 
-								<img class="card-img-top" src={{i.article_img}} alt="Card image cap">
+								<img class="card-img-top" style="width:50%;" src="/{{i.article_img}} "alt="Card image cap">
 								
 								
-				 				<p class="card-text">{{i.article_text}}
-								</p><a href="#" class="btn btn-primary btn-sm">查看详情</a><a href=""></a>
+				 				<p class="card-text">{{i.article_text|slice:"5:50"}} ......
+								</p><a href="{% url 'comment_user:comment_user' i.id%}" class="btn btn-primary btn-sm">查看详情</a><a href=""></a>
 				 				<ul class="blog">
 				 					<li><i class="fa fa-user-circle fa-lg"></i>：<a href="">{{i.article_user.user_file.nickname}}</a></li>
 				 					<li><i class="fa fa-calendar-check-o "></i>：<span>{{i.article_time}}</span></li>
 				 					<li><i class="fa fa-eye fa-lg"></i>：<span>{{i.article_click_volume}}</span></li>
-				 					<li><i class="fa fa-window-restore fa-lg"></i>：<a href="">{{i.article_category}}</a></li>
-									<li><i class="fa fa-envelope-o">{{i.comment_set.all.count}}</i>：<a href="">评论</a></li>
+				 					<li><i class="fa fa-window-restore fa-lg"></i>：<a href="">{{i.article_category.sort_name}}</a></li>
+									<li><i class="fa fa-envelope-o">{{i.comment_set.all.count}}</i>：评论</li>
 									
 				 				</ul>
 								{%else%}
-								<p class="card-text">{{i.article_text}}
-								</p><a href="#" class="btn btn-primary btn-sm">查看详情</a><a href=""></a>
+								<p class="card-text">{{i.article_text|slice:"5:50"}} ......
+								</p><a href="{% url 'comment_user:comment_user' i.id%}" class="btn btn-primary btn-sm">查看详情</a><a href=""></a>
 								<ul class="blog">
 									<li><i class="fa fa-user-circle fa-lg"></i>：<a href="">{{i.article_user}}</a></li>
 									<li><i class="fa fa-calendar-check-o "></i>：<span>{{i.article_time}}</span></li>
 									<li><i class="fa fa-eye fa-lg"></i>：<span>{{i.article_click_volume}}</span></li>
 									<li><i class="fa fa-window-restore fa-lg"></i>：<a href="">{{i.article_category}}</a></li>
-									<li><i class="fa fa-envelope-o">{{i.comment_set.all.count}}</i>：<a href="">评论</a></li>
+									<li><i class="fa fa-envelope-o">{{i.comment_set.all.count}}</i>：评论</li>
 									
 								</ul>
 				 				{%endif%}
@@ -182,7 +185,44 @@
 				{%empty%}
 				<h1>没有文章</h1>
 				{%endfor%}
-				
+				{%else%}
+				{% for i in art %}
+				<div class="blogbody">
+					<div class="card-header"><a href="" id=""><h5 >{{i.article_name}}</h5></a></div>
+				 				{% if i.article_img %}
+
+								<img class="card-img-top" style="width:50%;" src="{{i.article_img}} "alt="Card image cap">
+
+
+				 				<p class="card-text">{{i.article_text|slice:"5:50"}} ......
+								</p><a href="{% url 'comment_user:comment_user' i.id%}" class="btn btn-primary btn-sm">查看详情</a><a href=""></a>
+				 				<ul class="blog">
+				 					<li><i class="fa fa-user-circle fa-lg"></i>：<a href="">{{i.article_user.user_file.nickname}}</a></li>
+				 					<li><i class="fa fa-calendar-check-o "></i>：<span>{{i.article_time}}</span></li>
+				 					<li><i class="fa fa-eye fa-lg"></i>：<span>{{i.article_click_volume}}</span></li>
+				 					<li><i class="fa fa-window-restore fa-lg"></i>：<a href="">{{i.article_category.sort_name}}</a></li>
+									<li><i class="fa fa-envelope-o">{{i.comment_set.all.count}}</i>：评论</li>
+
+				 				</ul>
+								{%else%}
+								<p class="card-text">{{i.article_text|slice:"5:50"}} ......
+								</p><a href="{% url 'comment_user:comment_user' i.id%}" class="btn btn-primary btn-sm">查看详情</a><a href=""></a>
+								<ul class="blog">
+									<li><i class="fa fa-user-circle fa-lg"></i>：<a href="">{{i.article_user.user_file.nickname}}</a></li>
+				 					<li><i class="fa fa-calendar-check-o "></i>：<span>{{i.article_time}}</span></li>
+				 					<li><i class="fa fa-eye fa-lg"></i>：<span>{{i.article_click_volume}}</span></li>
+				 					<li><i class="fa fa-window-restore fa-lg"></i>：<a href="">{{i.article_category.sort_name}}</a></li>
+									<li><i class="fa fa-envelope-o">{{i.comment_set.all.count}}</i>：评论</li>
+
+								</ul>
+				 				{%endif%}
+				 </div>
+
+
+				{%empty%}
+				<h1>没有文章</h1>
+				{%endfor%}
+				{%endif%}
 
 			
 			</div>

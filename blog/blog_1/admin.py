@@ -24,7 +24,11 @@ class CommentAdmin(admin.ModelAdmin):
     list_filter = ['comment_text']
     # search_fields：搜索字段，搜索框会出现在上侧
     search_fields = ['comment_text']
-
+class SortAdmin(admin.ModelAdmin):
+    list_display = ['id','sort_name']
+    list_filter = ["sort_name"]
+    search_fields = ['sort_name']
+admin.site.register(models.Sort,SortAdmin)
 admin.site.register(models.User_file,User_fileAdmin)
 admin.site.register(models.Comment,CommentAdmin)
 admin.site.register(models.Article,ArticleAdmin)
