@@ -13,7 +13,7 @@ class User_fileAdmin(admin.ModelAdmin):
 
     # list_per_page：分页，分页框会出现在下侧
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ['id','article_name',"article_time","article_user","article_text","article_click_volume","article_img","article_category"]
+    list_display = ['id','article_name',"article_time","article_user","article_text","article_click_volume","article_img","article_category",'article_num']
 
     list_filter = ['article_name']
     # search_fields：搜索字段，搜索框会出现在上侧
@@ -28,6 +28,11 @@ class SortAdmin(admin.ModelAdmin):
     list_display = ['id','sort_name']
     list_filter = ["sort_name"]
     search_fields = ['sort_name']
+class ColltionAdmin(admin.ModelAdmin):
+    list_display = ['id','collection_article','collection_user','collection_time']
+    list_filter = ["id"]
+    search_fields = ['id']
+admin.site.register(models.Collection,ColltionAdmin)
 admin.site.register(models.Sort,SortAdmin)
 admin.site.register(models.User_file,User_fileAdmin)
 admin.site.register(models.Comment,CommentAdmin)

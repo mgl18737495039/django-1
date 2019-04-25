@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,reverse
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 # Create your views here.
@@ -9,22 +9,52 @@ from blog_1 import models
 def my_blog(request):
     username=request.session.get("username")
     c=User.objects.get(username=username).article_set.all()
+    num=User.objects.get(username=username).article_set.count()
     id_file=User.objects.get(username=username).id
     user_file=models.User_file.objects.get(user_file_id=id_file)
     sorts = models.Sort.objects.all()
-    return render(request,'my_blog.html',{'username':username,'art':c,'user_file':user_file,"sorts":sorts})
+
+
+    # 收藏
+
+    # 取出这个user的所有收藏记录
+    article_list = []
+    try:
+        s_username = request.session.get('username')
+        s_user = User.objects.get(username=s_username)
+        list_user_coll = s_user.collection_set.all()
+
+    except:
+        # 该用户未收藏
+
+        return render(request, 'my_blog.html',
+                      {'username': username, 'art': c, 'user_file': user_file, "sorts": sorts, 'num': num,
+                       'article_list': len(article_list)})
+    else:
+
+        # 遍历所有的收藏记录
+
+        for list_user_coll_one in list_user_coll:
+            # 获得一条记录取出对应的文章名字
+            article_one = list_user_coll_one.collection_article.article_name
+            # 存入一个列表
+            article_list.append(article_one)
+        return render(request, 'my_blog.html',
+                      {'username': username, 'art': c, 'user_file': user_file, "sorts": sorts, 'num': num,
+                       'article_list': len(article_list)})
 def send_blog(request):
     username = request.session.get("username")
     c = User.objects.get(username=username)
     if request.method == 'GET':
         sorts = models.Sort.objects.all()
-        return render(request, 'send_blog.html', {"sorts":sorts})
+        return render(request, 'send_blog.html', {"sorts":sorts,'username':username})
     elif request.method == "POST":
                 text_blog=request.POST["text"]
                 type_blog=request.POST["type"]
                 name_blog=request.POST["textname"]
                 try:
                     img_b=request.FILES['where']
+
 
                     img_blog=Image.open(img_b)
                     img_blog.save('./static/images/'+str(img_b))
@@ -61,7 +91,8 @@ def xiugai_user(request):
     user_f=c.user_file
     if request.method == 'GET':
         sorts = models.Sort.objects.all()
-        return render(request, 'xiugai_user.html', {"user_f":user_f,"sorts":sorts})
+        print(username)
+        return render(request, 'xiugai_user.html', {"user_f":user_f,"sorts":sorts,'usernam':username})
     elif request.method == "POST":
 
         age= request.POST["age"]
@@ -101,5 +132,44 @@ def xiugai_user(request):
                     user_f.save()
                     return redirect('/my_blog/my_blog/')
         else:
-            return HttpResponseRedirect('/my_blog/xiugai_user/',{'ero':"昵称已被占用"})
-            # return redirect('/my_blog/xiugai_user/',{'ero':"昵称已被占用"})
+            # return HttpResponseRedirect('/my_blog/xiugai_user/',{'ero':"昵称已被占用"})
+            return redirect('/my_blog/xiugai_user/',{'ero':"昵称已被占用"})
+            # return redirect(reverse('my_blog:xiugai_user',kwargs={'ero':"昵称已被占用"}))
+def my_blogcoll(request):
+    username=request.session.get("username")
+    c=User.objects.get(username=username).article_set.all()
+    num=User.objects.get(username=username).article_set.count()
+    id_file=User.objects.get(username=username).id
+    user_file=models.User_file.objects.get(user_file_id=id_file)
+    sorts = models.Sort.objects.all()
+
+
+    # 收藏
+
+    # 取出这个user的所有收藏记录
+    article_list = []
+    article_list_2=[]
+    try:
+        s_username = request.session.get('username')
+        s_user = User.objects.get(username=s_username)
+        list_user_coll = s_user.collection_set.all()
+
+    except:
+        # 该用户未收藏
+
+        return render(request, 'my_blogcoll.html',
+                      {'username': username, 'art': article_list_2, 'user_file': user_file, "sorts": sorts, 'num': num,
+                       'article_list': article_list})
+    else:
+
+        # 遍历所有的收藏记录
+
+        for list_user_coll_one in list_user_coll:
+            # 获得一条记录取出对应的文章名字
+            article_one = list_user_coll_one.collection_article.article_name
+            # 存入一个列表
+            article_list.append(article_one)
+            article_list_2.append(list_user_coll_one.collection_article)
+        return render(request, 'my_blogcoll.html',
+                      {'username': username, 'art': article_list_2, 'user_file': user_file, "sorts": sorts, 'num': num,
+                       'article_list': article_list,'len':len(article_list)})

@@ -61,3 +61,25 @@ def user_logout(request):
     response=HttpResponse()
     response.delete_cookie('username')
     return redirect('/')
+def update_pwd(request):
+    username = request.session.get("username")
+    user_1=User.objects.get(username=username)
+
+    if request.method == 'GET':
+        sorts = models.Sort.objects.all()
+        return render(request,'update_pwd.html',{
+                       'username': request.session.get("username"), 'sorts': sorts, })
+    elif request.method == "POST":
+
+            pwd1 = request.POST['pwd1']
+            pwd2 =request.POST['pwd2']
+            if pwd1 != pwd2:
+                return render(request, 'update_pwd.html', {'error_code': -1, "error_msg": '两次密码不同请重新输入'})
+            else:
+
+                user_1.set_password(pwd2)
+                user_1.save()
+                logout(request)
+                response = HttpResponse()
+                response.delete_cookie('username')
+                return redirect('/')

@@ -141,7 +141,7 @@
 											&nbsp<i class="fa fa-window-restore fa-lg"></i>：<a href="">{{i.article_category.sort_name}}</a>&nbsp
 											&nbsp<i class="fa fa-envelope-o">{{i.article_num}}</i>：评论 &nbsp
 
-											&nbsp<i class="fa fa-trash"></i>：<a href="{% url 'my_blog:del_blog' i.id%}">删除</a>&nbsp
+
 
 
 										</li>
@@ -159,6 +159,12 @@
 									<ul class="blog">
 
 										<li style="float: right"><i class="fa fa-sign-out"><a href="{% url 'comment_user:comment_user' i.id%}" >查看详情</a></i></li>
+										{% if i.article_name in article_list%}
+
+										<li><i class="fa fa-star">已收藏</i></li>
+										{% else %}
+										<li ><i class="fa fa-star-o"><a href="{% url 'core_1:coll_blog' i.id%}" >未收藏</a></i></li>
+										{%endif%}
 									</ul>
 									{%else%}
 									<p class="card-text" style="font-family: 宋体;font-size: 20px;"><span style="color: black">{{i.article_text|slice:"5:50"}} ......</span>
@@ -166,6 +172,13 @@
 									<ul class="blog">
 
 										<li style="float: right"><i class="fa fa-sign-out"><a href="{% url 'comment_user:comment_user' i.id%}" >查看详情</a></i></li>
+
+										{% if i.article_name in article_list%}
+
+										<li><i class="fa fa-star">已收藏</i></li>
+										{% else %}
+										<li ><i class="fa fa-star-o"><a href="{% url 'core_1:coll_blog' i.id%}" >未收藏</a></i></li>
+										{%endif%}
 									</ul>
 									{%endif%}
 					 </div>
@@ -202,7 +215,7 @@
 							<li class="list-group-item"><i class="fa fa-life-saver"></i><span>电话：{{user_file.pthone}}</span></li>
 
 							<li class="list-group-item"><i class="fa fa-fighter-jet"></i><span>博文：{{num}}-piece</span></li>
-							  <li class="list-group-item"><i class="fa fa-fighter-jet"><a href="{% url 'my_blog:my_blogcoll'%}">收藏</a></i><span>：{{article_list}}-piece</span></li>
+							  <li class="list-group-item"><i class="fa fa-fighter-jet"><a href="">收藏</a></i><span>：{{len}}-piece</span></li>
 							
 						  </ul>
 						  <div class="shezhi">

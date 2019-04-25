@@ -39,6 +39,7 @@ class Article(models.Model):
     article_click_volume=models.IntegerField(default=0)
     article_img=models.FileField(upload_to='./static/images/')
     article_category=models.ForeignKey('Sort',on_delete=models.CASCADE)
+    article_num=models.IntegerField(default=0)
 
     def __str__(self):
         return self.article_name
@@ -52,4 +53,12 @@ class Comment(models.Model):
         return self.comment_text
 class Sort(models.Model):
     sort_name=models.CharField(max_length=40)
+    def __str__(self):
+        return self.sort_name
+class Collection(models.Model):
+    collection_article=models.ForeignKey("Article",on_delete=models.CASCADE)
+    collection_user=models.ForeignKey(User,on_delete=models.CASCADE)
+    collection_time=models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self. collection_time

@@ -2,29 +2,27 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>博客</title>
-    <meta charset="utf-8">
-     <title>祺聚宝</title>
+    <title>祺聚宝</title>
+   <meta charset="utf-8">
+   <title>祺聚宝</title>
     <link rel="stylesheet" type="text/css" href="/static/boot/css/bootstrap.min.css" href=""/>
-    <script type="text/javascript" src="/static/js/jQuery.1.9.1.js" ></script>
-    <script type="text/javascript" src="/static/js/jquery-1.9.1.min.js"></script>
-    <script src="/static/boot/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-    
-    <link href="/static/css/index.css" rel="stylesheet" type="text/css" />
-    <link href="/static/css/jcss.css" rel="stylesheet" type="text/css" />
-    <link href="/static/css/sl_ny.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="/static/js/cebianlan.js"></script>
-    <script type="text/javascript" src="/static/js/Jane-js.js"></script>
-    <link rel="stylesheet" href="/static/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
-	
-	
+   <script type="text/javascript" src="/static/js/jQuery.1.9.1.js" ></script>
+   <script type="text/javascript" src="/static/js/jquery-1.9.1.min.js"></script>
+   <script src="/static/boot/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+   
+   <link href="/static/css/index.css" rel="stylesheet" type="text/css" />
+   <link href="/static/css/jcss.css" rel="stylesheet" type="text/css" />
+   <link href="/static/css/sl_ny.css" rel="stylesheet" type="text/css" />
+   <script type="text/javascript" src="/static/js/cebianlan.js"></script>
+   <script type="text/javascript" src="/static/js/Jane-js.js"></script>
+   <link rel="stylesheet" href="/static/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+  
 </head>
 
 <body>
     <!--header-->
     
 
-   
 <div class="header-top">
     	<div class="page-top">
         	<div class="sl_cfrx">
@@ -77,42 +75,41 @@
     </div>
 
 
-    
+     
 
     <div class="sl_content">
         <div class="sl_dl_l">
-            <img src="/static/images/dl_01.png" alt="">
+            <img src="images/dl_01.png" alt="">
             <div class="sl_dl_l_r">
-                <h1>注册</h1>
+                <h1>登录</h1>
                 <ul class="sl_srk">
-					<form action="{% url 'blog_1:register' %}" method="post">
-						 <li>
-							<input class="sl_yhm" type="text" id="userAccount" name="username" placeholder="用户名/手机号" onfocus="getfocus(this);" onblur="lostfocus(this,'用户名/手机号');" />
-						</li>
-						<li>
-							<input class="sl_yhm" type="email" name="emaile" id="emaile" placeholder="邮箱" />
-						</li>
-						<li>
-							<input class="sl_yhm" type="text" id="usernickname" name="nickname" placeholder="昵称" onfocus="getfocus(this);" onblur="lostfocus(this,'昵称');" />
-						</li>
-                        <li>
-							<input class="sl_yhm" type="text" id="userPassword" name="userPassword" placeholder="密码" onfocus="getfocus(this);" onblur="lostfocus(this,'密码');" />
-						</li>
-                    
-						<li>
-							<input class="sl_yhm" type="text" id="ag_userPassword" name="ag_userPassword" placeholder="确认密码" onfocus="getfocus(this);" onblur="lostfocus(this,'密码');" />
-						</li>
-						                    
-                        <li>
-                            {{error_msg}}
-                        </li>
+                   <form action="{% url 'blog_1:update_pwd'%}" method="post">
+
+                   	 <li>
+                   		<input class="sl_yhm" type="text" id="userpwd1" name="pwd1" placeholder="新密码" onfocus="getfocus(this);" onblur="lostfocus(this,'新密码');" />
+                   	</li>
+                   	<li>
+                   		<input class="sl_yhm" type="text" id="userpwd2" name="pwd2" placeholder="再次输入新密码" onfocus="getfocus(this);" onblur="lostfocus(this,'密码');" />
+                   	</li>
+                   	<li>
 						
-						<li>
-							<input type="submit" value="注册账号"style="color:#f75c5c;" class="sl_zczhy" />
-						</li>
-						
-					</form>
+                   		<input type="submit" value="确认"style="color: #fff;" class="sl_ljdl" href="#"/>
+                   	</li>
+										</form>
+					<li>{{error_msg}}</li>
+                    <li style="height:40px;">
+                   		<div class="sl_huo">
+                   			<p>或</p>
+                   		</div>
+                   	</li>
+                   	<li>
+                       <a style="color:#f75c5c;" class="sl_zczhy" href="{% url  'my_blog:my_blog' %}">返回</a>
+                   	</li>
                    
+                   	
+                   
+                   	
+                   </form>
                 </ul>
             </div>
         </div>
@@ -129,7 +126,10 @@
    
     <!-- footer -->
 
-
+   
+       
+           
+   </div>
         <!--侧边栏star-->
         <ul class="rightIcon" id="rightIcon">
          

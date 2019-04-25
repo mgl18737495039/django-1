@@ -16,45 +16,22 @@
 	<link rel="stylesheet" href="/static/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
     <style type="text/css">
     	.sl_footer{width: 100%;background-color: #323232;}
-		
+
     </style>
 
 </head>
 
 <body>
-    <!--header-->
-    <!-- <div class="header-top">
-    	<div class="page-top">
-        	<div class="sl_cfrx">
-            <ul class="top-leftb">
-                <li>
-                    <a href="#" class="sl_phone">
-                        <img src="images/sl_01.png" alt=""/>
-                    </a>
-                    <a href="#" class="sl_k_h">客服热线 18737490539</a>
-                </li>
-                
-               
-            </ul>
-            </div>
-			
-            <div class="sl_qdl">
-				
-                <a class="sl_gk" href="登录.html" style="color: #f75c5c;">登录</a>  
-                <a class="sl_gk1" href="注册.html" style="color:#fff;">注册</a>  
-              
-            </div>
-        </div>
-    </div> -->
 
-   
+
+
 <div class="header-top">
     	<div class="page-top">
         	<div class="sl_cfrx">
             <ul class="top-leftb">
                 <li>
                     <a href="#" class="sl_phone">
-                        <img src="images/sl_01.png" alt=""/>
+                        <img src="/static/images/sl_01.png" alt=""/>
                     </a>
                     <a href="#" class="sl_k_h">客服热线 400-888-8888</a>
                 </li>
@@ -107,25 +84,25 @@
 			    <div class="menu-wz">
 			        <ul>
 			            <li><a href="index.html">首页</a></li>
-			            <li><a href="我要投资.html">旅游</a></li>         
+			            <li><a href="我要投资.html">旅游</a></li>
 			            <li><a href="我要借款.html">食品</a></li>
 			            <li><a href="新手指引.html">体育</a></li>
 			            <li><a href="问答专区.html">游戏</a></li>
 			            <li><a href="关于我们.html">军事</a></li>
 			            <li><a href="我的账户.html">我的账户</a></li>
-			        </ul>                                 
+			        </ul>
 			    </div>
 			</div>
 		</div> -->
-		
-		
-		
-		
-		
+
+
+
+
+
 		<div class="cen_1">
-			
-				    
-			
+
+
+
 			<div class="cen_1_1">
 				{% for i in art %}
 				<div class="blogbody">
@@ -140,10 +117,6 @@
 											&nbsp<i class="fa fa-eye fa-lg"></i>：<span>{{i.article_click_volume}}</span>&nbsp
 											&nbsp<i class="fa fa-window-restore fa-lg"></i>：<a href="">{{i.article_category.sort_name}}</a>&nbsp
 											&nbsp<i class="fa fa-envelope-o">{{i.article_num}}</i>：评论 &nbsp
-
-											&nbsp<i class="fa fa-trash"></i>：<a href="{% url 'my_blog:del_blog' i.id%}">删除</a>&nbsp
-
-
 										</li>
 
 
@@ -158,7 +131,14 @@
 									</p><a href=""></a>
 									<ul class="blog">
 
+
 										<li style="float: right"><i class="fa fa-sign-out"><a href="{% url 'comment_user:comment_user' i.id%}" >查看详情</a></i></li>
+										{% if i.article_name in article_list%}
+
+										<li><i class="fa fa-star">已收藏</i></li>
+										{% else %}
+										<li ><i class="fa fa-star-o"><a href="{% url 'core_1:coll_blog' i.id%}" >未收藏</a></i></li>
+										{%endif%}
 									</ul>
 									{%else%}
 									<p class="card-text" style="font-family: 宋体;font-size: 20px;"><span style="color: black">{{i.article_text|slice:"5:50"}} ......</span>
@@ -166,9 +146,18 @@
 									<ul class="blog">
 
 										<li style="float: right"><i class="fa fa-sign-out"><a href="{% url 'comment_user:comment_user' i.id%}" >查看详情</a></i></li>
+										<li style="float: right"><i class="fa fa-sign-out"><a href="{% url 'comment_user:comment_user' i.id%}" >查看详情</a></i></li>
+										{% if i.article_name in article_list%}
+
+										<li><i class="fa fa-star">已收藏</i></li>
+										{% else %}
+										<li ><i class="fa fa-star-o"><a href="{% url 'core_1:coll_blog' i.id%}" >未收藏</a></i></li>
+										{%endif%}
 									</ul>
 									{%endif%}
 					 </div>
+
+
 
 				{%empty%}
 				<h1>没有文章</h1>
@@ -180,55 +169,61 @@
 		</div>
 
 					<div class="cen_2">
-						<div class="cen_2_1">
-							<form class="form-inline my-2 my-lg-0">
-							  <a class="btn btn-primary" href="{% url 'my_blog:send_blog' %}" role="button">发布文章</a>
-							</form>
-							
-						</div>
-						<div class="card" style="width: 18rem;">
-						  <img class="card-img-top" style="width: 50px;height: 50px;" src="/{{user_file.user_img}}" alt="Card image cap">
-						  <div class="card-body">
-							<h5 class="card-title">我的名言</h5>
-							<p class="card-text">{{user_file.Personal_quotes}}</p>
-						  </div>
-						  <ul class="list-group list-group-flush">
 
-							  <li class="list-group-item"><i class="fa fa-rocket"></i><span>昵称：{{user_file.nickname}}</span></li>
-							<li class="list-group-item"><i class="fa fa-heart"></i><span>爱好：{{user_file.hobby_user}}</span></li>
-							<li class="list-group-item"><i class="fa fa-flask"></i><span>专业：{{user_file.speciality}}</span></li>
-							<li class="list-group-item"><i class="fa fa-anchor"></i><span>年龄：{{user_file.age}}</span></li>
-							<li class="list-group-item"><i class="fa fa-map-pin"></i><span>性别：{{user_file.gender}}</span></li>
-							<li class="list-group-item"><i class="fa fa-life-saver"></i><span>电话：{{user_file.pthone}}</span></li>
+			<div class="cen_2_1">
+				<form class="form-inline my-2 my-lg-0" method="post" action="{% url 'core_1:find'%}">
+				  <input class="form-control mr-sm-2" type="search" name="find_content" placeholder="搜索" aria-label="Search">
+				  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
+				</form>
 
-							<li class="list-group-item"><i class="fa fa-fighter-jet"></i><span>博文：{{num}}-piece</span></li>
-							  <li class="list-group-item"><i class="fa fa-fighter-jet"><a href="{% url 'my_blog:my_blogcoll'%}">收藏</a></i><span>：{{article_list}}-piece</span></li>
-							
-						  </ul>
-						  <div class="shezhi">
-							  <a href="{% url 'my_blog:xiugai_user'%}">基本信息修改<i class="fa fa-cog fa-2x"></i></a>
-							  <a href="{% url 'blog_1:update_pwd'%}">密码修改<i class="fa fa-cog fa-2x"></i></a>
-							  
-						  </div>
-						</div>
-						
-					</div>
+			</div>
+			<div class="cen_2_2">
+				<div class="list-group">
+				  <a href="{% url 'core_1:hort_blog'%}"style="background: rgba(0,0,0,.03);border-color: #e5e5e5;color: #1d2124" class="list-group-item list-group-item-action active">
+					热门文章
+				  </a>
+					{% for t in art_click %}
+						<a href="{% url 'comment_user:comment_user' t.id%}" class="list-group-item list-group-item-action">{{t.article_name}}<i class="fa fa-eye "	style="font-size: xx-small">{{t.article_click_volume}}</i></a>
+					{%endfor%}
 				</div>
-				
+				<div class="list-group">
+				  <a href="{% url 'core_1:new_blog'%}"style="background: rgba(0,0,0,.03);border-color: #e5e5e5;color: #1d2124" class="list-group-item list-group-item-action active">
+					最近发布文章
+				  </a>
+				  {% for t in art_time %}
+				  <a href="{% url 'comment_user:comment_user' t.id%}" class="list-group-item list-group-item-action">{{t.article_name}}<i class="fa fa-calendar-check-o ">{{t.article_time}}</i></a>
+				  {%endfor%}
+				</div>
+				<div class="list-group">
+				  <a href="{% url 'core_1:com_blog'%}"style="background: rgba(0,0,0,.03);border-color: #e5e5e5;color: #1d2124" class="list-group-item list-group-item-action active">
+					最近热评文章
+				  </a>
+					{% for t in art_num %}
+				  <a href="{% url 'comment_user:comment_user' t.id%}" class="list-group-item list-group-item-action">{{t.article_name}}<i class="fa fa-calendar-check-o ">{{t.article_num}}</i></a>
+				  {%endfor%}
+
+
+
+				</div>
+
+			</div>
+		</div>
+				</div>
 
 
 
 
 
-   
-  
-   
+
+
+
+
     <!-- footer -->
-    
+
         <!--侧边栏star-->
 	<ul class="rightIcon" id="rightIcon">
-	 
-	 
+
+
 	  <li class="rIcon_toTop1">
 	   <a href="#">
 		<span>
@@ -246,8 +241,8 @@
 
 
 </script>
-   
 
-   
+
+
 </body>
 </html>

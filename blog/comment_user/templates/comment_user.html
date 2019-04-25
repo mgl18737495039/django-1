@@ -23,70 +23,92 @@
 <body>
     
 	
-<div class="navbar navbar-expand-lg   fixed-top navbar-light bg-light" style="height: 69.69px;">
-	 <nav class="navbar navbar-expand-lg   fixed-top navbar-light bg-light" style="background-color: #323232;width: 61%; margin: 0 auto; ">
-						  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						 </button>
-						  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						  </button>
-						  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-							<div class="navbar-nav">
-									<a class="nav-item nav-link active" href="{% url 'core_1:index'%}"><button type="button" class="btn btn-danger" style="margin-left: 50px; width: 100px;">首页</button></a>
+<div class="header-top">
+    	<div class="page-top">
+        	<div class="sl_cfrx">
+            <ul class="top-leftb">
+                <li>
+                    <a href="#" class="sl_phone">
+                        <img src="images/sl_01.png" alt=""/>
+                    </a>
+                    <a href="#" class="sl_k_h">客服热线 400-888-8888</a>
+                </li>
 
-							  {% for i in sorts%}
-								<a class="nav-item nav-link" href="#"><button type="button" class="btn btn-danger"style="margin-left: 50px; width: 100px;">{{i.sort_name}}</button></a>
-								{%empty%}
-								没有分类
-								{%endfor%}
+
+            </ul>
+            </div>
+            <div class="sl_qdl">
+
+
 								{% if username %}
 
-								<a class="nav-item nav-link" href="{% url 'my_blog:my_blog' %}"><button type="button" class="btn btn-danger"style="margin-left: 50px; width: 100px;">我的</button></a>
-							  	<a href=""><h3 style="display: block;margin-left: 50px;">{{request.user.user_file.nickname}}</h3></a>
-								<a class="nav-item nav-link" href="{% url 'blog_1:user_logout'%}"><button type="button" class="btn btn-danger"style="margin-right: 50px;">退出</button></a>
+													<a class="sl_gk" href="{% url 'my_blog:my_blog' %}" style="color: #f75c5c;">{{request.user.user_file.nickname}}</a>
+													<a class="sl_gk" href="{% url 'blog_1:user_logout'%}" style="color: #f75c5c;">退出</a>
+
 								{%else%}
-								<a class="nav-item nav-link" href="{% url  'blog_1:user_login' %}"><button type="button" class="btn btn-danger" style="margin-left: 50px;">登录</button></a>
-							  	<a class="nav-item nav-link" href="{% url  'blog_1:register' %}"><button type="button" class="btn btn-danger"style="margin-right: 50px;">注册{{id}}</button></a>
+								<a class="sl_gk" href="{% url  'blog_1:user_login' %}" style="color: #f75c5c;">登录</a>
+                				<a class="sl_gk1" href="{% url  'blog_1:register' %}" style="color:#fff;">注册</a>
 								{%endif%}
 
-							</div>
+            </div>
+        </div>
+    </div>
 
-						  </div>
-	</nav>
-</div>
+ <div class="nav">
+        <div class="sl_content">
+            <img src="/static/images/z.jpg" class="zhong_mgl" alt="">
+            <div class="menu-wz">
+                <ul>
+
+					 {% for i in sorts%}
+					<li><a href="{% url 'core_1:fenlei' i.id%}">{{i.sort_name}}</a></li>
+
+					{%empty%}
+					没有分类
+					{%endfor%}
+<li><a class="sl_sy current" href="{% url 'core_1:index'%}">首页</a></li>
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
 
 	<div>
 		<div class="fabu" style="width: 61.8%;margin:100px auto;">
 			<div class="blogbody">
-					<div class="card-header"><a href="" id=""><h5 >{{i.article_name}}</h5></a></div>
-				 				{% if i.article_img %}
-
-								<img class="card-img-top" style="width:50%;" src="/{{i.article_img}}" alt="Card image cap">
-
-
-				 				<p class="card-text">{{i.article_text}}
-								</p>
-				 				<ul class="blog">
-				 					<li><i class="fa fa-user-circle fa-lg"></i>：<a href="">{{i.article_user.user_file.nickname}}</a></li>
-				 					<li><i class="fa fa-calendar-check-o "></i>：<span>{{i.article_time}}</span></li>
-				 					<li><i class="fa fa-eye fa-lg"></i>：<span>{{i.article_click_volume}}</span></li>
-				 					<li><i class="fa fa-window-restore fa-lg"></i>：<a href="">{{i.article_category}}</a></li>
-
-				 				</ul>
-								{%else%}
-								<p class="card-text">{{i.article_text}}</p>
-
-								<ul class="blog">
-									<li><i class="fa fa-user-circle fa-lg"></i>：<a href="">{{i.article_user}}</a></li>
-									<li><i class="fa fa-calendar-check-o "></i>：<span>{{i.article_time}}</span></li>
-									<li><i class="fa fa-eye fa-lg"></i>：<span>{{i.article_click_volume}}</span></li>
-									<li><i class="fa fa-window-restore fa-lg"></i>：<a href="">{{i.article_category}}</a></li>
+						<div class="card-header">
+							<ul >
+								<li style="width: 50%;height: 40px;font-family:宋体; margin: 0 auto;   font-size:25px; "><i class="fa fa-book fa-lg"></i>:<a href="" style="color: black">{{i.article_name}}</a></li>
+							</ul>
+							<ul class="">
+										<li style="width: 90%;height: 40px; margin:10px auto;    ">
+											<i class="fa fa-user-circle fa-lg"></i>：<a href="{% url 'other_blog:other_blog' i.article_user.id%}">{{i.article_user.user_file.nickname}}</a>&nbsp
+											&nbsp<i class="fa fa-calendar-check-o "></i>：<span>{{i.article_time}}</span>&nbsp
+											&nbsp<i class="fa fa-eye fa-lg"></i>：<span>{{i.article_click_volume}}</span>&nbsp
+											&nbsp<i class="fa fa-window-restore fa-lg"></i>：<a href="">{{i.article_category.sort_name}}</a>&nbsp
+											&nbsp<i class="fa fa-envelope-o">{{i.article_num}}</i>：评论 &nbsp
+										</li>
 
 
-								</ul>
-				 				{%endif%}
-				 </div>
+							</ul>
+						</div>
+									{% if i.article_img %}
+
+									<img class="card-img-top" style="width:50%;" src="/{{i.article_img}} "alt="Card image cap">
+
+
+									<p class="card-text" style="font-family: 宋体;font-size: 20px;"><span style="color: black">{{i.article_text}} </span>
+									</p>
+
+									{%else%}
+									<p class="card-text" style="font-family: 宋体;font-size: 20px;"><span style="color: black">{{i.article_text}}</span>
+									</p>
+
+									{%endif%}
+					 </div>
 			<div class="blogbody">
 				<ul >
 					{% for e in comments%}

@@ -16,6 +16,7 @@ def user_side(request,id):
     comment_nei=request.POST['comment_nei']
     user1=User.objects.get(username=username)
     article= models.Article.objects.get(pk=id)
+    article.article_num +=1
     comment1=models.Comment()
     comment1.comment_user=user1
     comment1.comment_article=article
@@ -27,5 +28,5 @@ def user_side(request,id):
         # # return redirect('/comment_user/comment_user.html')
     else:
         comment1.save()
-
+        article.save()
         return redirect(reverse('comment_user:comment_user', args=(id,)))

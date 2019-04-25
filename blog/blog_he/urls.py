@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^blog_1/',include('blog_1.urls',namespace='blog_1')),
     url(r'^my_blog/',include('my_blog.urls',namespace='my_blog')),
     url(r'^comment_user/',include('comment_user.urls',namespace='comment_user')),
+url(r'^other_blog/',include('other_blog.urls',namespace='other_blog')),
     url(r'',include('core_1.urls',namespace='core_1'))
 
 ]
