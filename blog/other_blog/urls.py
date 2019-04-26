@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from static.css import views
+from other_blog import views
 
 app_name='other_blog'
 urlpatterns = [

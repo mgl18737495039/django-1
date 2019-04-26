@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,reverse
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
-
+from django.core.paginator import Paginator
 from blog_1 import models
 
 def other_blog(request,id):
@@ -25,7 +25,7 @@ def other_blog(request,id):
 
         return render(request, 'other_blog.html', {'username': username, 'art': c, 'user_file': user_file,
                                                    "sorts": sorts,
-                                                   'num': num, 'article_list': article_list})
+                                                   'num': num, 'article_list': article_list,'id':id})
     else:
 
         # 遍历所有的收藏记录
@@ -35,7 +35,13 @@ def other_blog(request,id):
             article_one = list_user_coll_one.collection_article.article_name
             # 存入一个列表
             article_list.append(article_one)
+            # 分页
+        paninator = Paginator(c, 2)
+        pagenum = request.GET.get("pagenum")
+        if pagenum == None:
+            pagenum = 1
 
-        return render(request, 'other_blog.html', {'username': username, 'art': c, 'user_file': user_file,
+        page = paninator.page(pagenum)
+        return render(request, 'other_blog.html', {'username': username, 'art': page, 'user_file': user_file,
                                                    "sorts": sorts,
-                                                   'num':num,'article_list': article_list})
+                                                   'num':num,'article_list': article_list,'id':id})

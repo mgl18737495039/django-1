@@ -88,7 +88,7 @@
 			
 			<div class="cen_1_1">
 				{%if id  %}
-				{% for i in art %}
+				{% for i in art.object_list%}
 				<div class="blogbody">
 						<div class="card-header">
 							<ul >
@@ -146,8 +146,16 @@
 				{%empty%}
 				<h1>没有文章</h1>
 				{%endfor%}
+					{% if art.has_previous%}
+					<a href="/?pagenum={{art.previous_page_number}}">上一页</a>
+					{% endif%}
+				第{{art.number}}页/共{{art.paginator.num_pages}}页
+					{% if art.has_next%}
+					<a href="/?pagenum={{art.next_page_number}}">下一页</a>
+
+					{%endif%}
 				{%elif mages in "hort" %}
-					{% for i in art %}
+					{% for i in art.object_list %}
 				<div class="blogbody">
 						<div class="card-header">
 							<ul >
@@ -204,8 +212,16 @@
 					{%empty%}
 						<h1>没有文章</h1>
 					{%endfor%}
+				{% if art.has_previous%}
+					<a href="/?pagenum={{art.previous_page_number}}">上一页</a>
+					{% endif%}
+				第{{art.number}}页/共{{art.paginator.num_pages}}页
+					{% if art.has_next%}
+					<a href="/?pagenum={{art.next_page_number}}">下一页</a>
+
+					{%endif%}
 				{%elif mages in "new" %}
-					{% for i in art %}
+					{% for i in art.object_list %}
 								<div class="blogbody">
 						<div class="card-header">
 							<ul >
@@ -263,8 +279,16 @@
 					{%empty%}
 						<h1>没有文章</h1>
 					{%endfor%}
+					{% if art.has_previous%}
+					<a href="/?pagenum={{art.previous_page_number}}">上一页</a>
+					{% endif%}
+				第{{art.number}}页/共{{art.paginator.num_pages}}页
+					{% if art.has_next%}
+					<a href="/?pagenum={{art.next_page_number}}">下一页</a>
+
+					{%endif%}
 				{%elif mages in "com" %}
-					{% for i in art %}
+					{% for i in art.object_list %}
 							<div class="blogbody">
 						<div class="card-header">
 							<ul >
@@ -321,8 +345,16 @@
 					{%empty%}
 						<h1>没有文章</h1>
 					{%endfor%}
+				{% if art.has_previous%}
+					<a href="/?pagenum={{art.previous_page_number}}">上一页</a>
+					{% endif%}
+				第{{art.number}}页/共{{art.paginator.num_pages}}页
+					{% if art.has_next%}
+					<a href="/?pagenum={{art.next_page_number}}">下一页</a>
+
+					{%endif%}
 				{%else%}
-					{% for i in art %}
+					{% for i in art.object_list %}
 					<div class="blogbody">
 						<div class="card-header">
 							<ul >
@@ -377,7 +409,15 @@
 					{%empty%}
 					<h1>没有文章</h1>
 					{%endfor%}
-				{%endif%}
+					{% if art.has_previous%}
+					<a href="/?pagenum={{art.previous_page_number}}">上一页</a>
+					{% endif%}
+				第{{art.number}}页/共{{art.paginator.num_pages}}页
+					{% if art.has_next%}
+					<a href="/?pagenum={{art.next_page_number}}">下一页</a>
+
+					{%endif%}
+				{% endif%}
 
 			
 			</div>

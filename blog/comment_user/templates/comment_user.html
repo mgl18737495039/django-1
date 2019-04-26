@@ -100,11 +100,16 @@
 									<img class="card-img-top" style="width:50%;" src="/{{i.article_img}} "alt="Card image cap">
 
 
-									<p class="card-text" style="font-family: 宋体;font-size: 20px;"><span style="color: black">{{i.article_text}} </span>
+									<p class="card-text" style="font-family: 宋体;font-size: 20px;"><textarea readonly="readonly" rows="20" cols="100" name="text">
+						{{i.article_text}}
+					</textarea>
 									</p>
 
 									{%else%}
-									<p class="card-text" style="font-family: 宋体;font-size: 20px;"><span style="color: black">{{i.article_text}}</span>
+
+									<p class="card-text" style="font-family: 宋体;font-size: 20px;overflow-y: auto"><textarea readonly="readonly" rows="20" cols="100" name="text">
+						{{i.article_text}}
+					</textarea>
 									</p>
 
 									{%endif%}

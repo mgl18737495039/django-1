@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 
 from PIL import Image
 from blog_1 import models
-
+from django.core.paginator import Paginator
 def my_blog(request):
     username=request.session.get("username")
     c=User.objects.get(username=username).article_set.all()
@@ -14,7 +14,13 @@ def my_blog(request):
     user_file=models.User_file.objects.get(user_file_id=id_file)
     sorts = models.Sort.objects.all()
 
+    # 分页
+    paninator = Paginator(c, 2)
+    pagenum = request.GET.get("pagenum")
+    if pagenum == None:
+        pagenum = 1
 
+    page = paninator.page(pagenum)
     # 收藏
 
     # 取出这个user的所有收藏记录
@@ -28,7 +34,7 @@ def my_blog(request):
         # 该用户未收藏
 
         return render(request, 'my_blog.html',
-                      {'username': username, 'art': c, 'user_file': user_file, "sorts": sorts, 'num': num,
+                      {'username': username, 'art': page, 'user_file': user_file, "sorts": sorts, 'num': num,
                        'article_list': len(article_list)})
     else:
 
@@ -40,7 +46,7 @@ def my_blog(request):
             # 存入一个列表
             article_list.append(article_one)
         return render(request, 'my_blog.html',
-                      {'username': username, 'art': c, 'user_file': user_file, "sorts": sorts, 'num': num,
+                      {'username': username, 'art': page, 'user_file': user_file, "sorts": sorts, 'num': num,
                        'article_list': len(article_list)})
 def send_blog(request):
     username = request.session.get("username")
@@ -170,6 +176,31 @@ def my_blogcoll(request):
             # 存入一个列表
             article_list.append(article_one)
             article_list_2.append(list_user_coll_one.collection_article)
+        # 分页
+        paninator = Paginator(article_list_2, 2)
+        pagenum = request.GET.get("pagenum")
+        if pagenum == None:
+            pagenum = 1
+
+        page = paninator.page(pagenum)
         return render(request, 'my_blogcoll.html',
-                      {'username': username, 'art': article_list_2, 'user_file': user_file, "sorts": sorts, 'num': num,
+                      {'username': username, 'art': page, 'user_file': user_file, "sorts": sorts, 'num': num,
                        'article_list': article_list,'len':len(article_list)})
+def quxiao(request,id):
+    article_list = []
+
+    try:
+        s_username = request.session.get('username')
+        s_user = User.objects.get(username=s_username)
+        list_user_coll = s_user.collection_set.all()
+    except:
+        print('删除失败')
+    else:
+        # 遍历所有的收藏记录
+
+        for list_user_coll_one in list_user_coll:
+            # 获得一条记录取出对应的文章名字
+            article_one = list_user_coll_one.collection_article.article_name
+            if article_one==models.Article.objects.get(pk=id).article_name:
+                list_user_coll_one.delete()
+                return redirect(reverse('my_blog:my_blogcoll'))

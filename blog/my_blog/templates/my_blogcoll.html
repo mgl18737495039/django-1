@@ -127,7 +127,7 @@
 				    
 			
 			<div class="cen_1_1">
-				{% for i in art %}
+				{% for i in art.object_list %}
 				<div class="blogbody">
 						<div class="card-header">
 							<ul >
@@ -162,6 +162,7 @@
 										{% if i.article_name in article_list%}
 
 										<li><i class="fa fa-star">已收藏</i></li>
+										<li ><i class="fa fa-star-o"><a href="{%url 'my_blog:quxiao' i.id%}" >取消收藏</a></i></li>
 										{% else %}
 										<li ><i class="fa fa-star-o"><a href="{% url 'core_1:coll_blog' i.id%}" >未收藏</a></i></li>
 										{%endif%}
@@ -187,7 +188,14 @@
 				<h1>没有文章</h1>
 				{%endfor%}
 
+				{% if art.has_previous%}
+					<a href="/my_blog/my_blogcoll/?pagenum={{art.previous_page_number}}">上一页</a>
+					{% endif%}
+				第{{art.number}}页/共{{art.paginator.num_pages}}页
+					{% if art.has_next%}
+					<a href="/my_blog/my_blogcoll/?pagenum={{art.next_page_number}}">下一页</a>
 
+					{%endif%}
 
 			</div>
 		</div>

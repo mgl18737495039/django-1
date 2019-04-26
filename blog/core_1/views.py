@@ -10,7 +10,7 @@ from django.http import HttpResponse,HttpResponsePermanentRedirect
 # Create your views here.
 from blog_1 import models
 from django.contrib.auth.models import User
-
+from django.core.paginator import Paginator
 
 def maopao(list1):
     for i in range(len(list1)-1):
@@ -22,6 +22,15 @@ def maopao(list1):
 def index(request):
 
     c=models .Article.objects.all()
+
+    #分页
+    paninator=Paginator(c,2)
+    pagenum=request.GET.get("pagenum")
+    if pagenum==None:
+        pagenum=1
+
+    page=paninator.page(pagenum)
+
     # 筛选出点击量前四的文档
     a = models.Article.objects.order_by('-article_click_volume')
     a_1_num=0
@@ -65,7 +74,7 @@ def index(request):
     except:
         #该用户未收藏
 
-        return render(request, 'one.html', {'art': c, 'art_click': a_1_list, 'art_time': a1_1_list,'art_num':a2_1_list,
+        return render(request, 'one.html', {'art': page, 'art_click': a_1_list, 'art_time': a1_1_list,'art_num':a2_1_list,
                                             'username': request.session.get("username"), 'sorts': sorts, "id": id,
                                             'article_list':article_list})
     else:
@@ -79,12 +88,18 @@ def index(request):
             # 存入一个列表
             article_list.append(article_one)
         return render(request, 'one.html',
-                      {'art': c, 'art_click': a_1_list, 'art_time': a1_1_list, 'art_num': a2_1_list,
+                      {'art': page, 'art_click': a_1_list, 'art_time': a1_1_list, 'art_num': a2_1_list,
                        'username': request.session.get("username"), 'sorts': sorts, "id": id,
                        'article_list': article_list})
 def fenlei(request,id):
     c=models.Sort.objects.get(id=id).article_set.all()
+    # 分页
+    paninator = Paginator(c, 2)
+    pagenum = request.GET.get("pagenum")
+    if pagenum == None:
+        pagenum = 1
 
+    page = paninator.page(pagenum)
     # 筛选出点击量前四的文档
     a = models.Article.objects.order_by('-article_click_volume')
     a_1_num = 0
@@ -134,7 +149,7 @@ def fenlei(request,id):
     except:
         # 该用户未收藏
 
-        return render(request, 'one.html', {'art': c, 'art_click': a_1_list, 'art_time': a1_1_list,
+        return render(request, 'one.html', {'art': page, 'art_click': a_1_list, 'art_time': a1_1_list,
                                             'username': request.session.get("username"), 'sorts': sorts, "id": id,
                                             'art_num': a2_1_list,'article_list': article_list})
     else:
@@ -146,13 +161,20 @@ def fenlei(request,id):
             article_one = list_user_coll_one.collection_article.article_name
             # 存入一个列表
             article_list.append(article_one)
-        return render(request, 'one.html', {'art': c, 'art_click': a_1_list, 'art_time': a1_1_list,
+        return render(request, 'one.html', {'art': page, 'art_click': a_1_list, 'art_time': a1_1_list,
                                             'username': request.session.get("username"), 'sorts': sorts, "id": id,
                                             'art_num': a2_1_list, 'article_list': article_list})
 def hort_blog(request):
 
     # 筛选出点击量前四的文档
     a = models.Article.objects.order_by('-article_click_volume')
+    # 分页
+    paninator = Paginator(a, 2)
+    pagenum = request.GET.get("pagenum")
+    if pagenum == None:
+        pagenum = 1
+
+    page = paninator.page(pagenum)
     a_1_num = 0
     a_1_list = []
     for a_1 in a:
@@ -197,7 +219,7 @@ def hort_blog(request):
         # 该用户未收藏
 
         return render(request, 'one.html',
-                      {'art': a, 'art_click': a_1_list, 'art_time': a1_1_list, 'art_num': a2_1_list,
+                      {'art': page, 'art_click': a_1_list, 'art_time': a1_1_list, 'art_num': a2_1_list,
                        'username': request.session.get("username"), 'sorts': sorts, 'mages': 'hort',
                        'article_list': article_list})
     else:
@@ -210,7 +232,7 @@ def hort_blog(request):
             # 存入一个列表
             article_list.append(article_one)
         return render(request, 'one.html',
-                      {'art': a, 'art_click': a_1_list, 'art_time': a1_1_list, 'art_num': a2_1_list,
+                      {'art': page, 'art_click': a_1_list, 'art_time': a1_1_list, 'art_num': a2_1_list,
                        'username': request.session.get("username"), 'sorts': sorts, 'mages': 'hort',
                        'article_list': article_list})
 def new_blog(request):
@@ -226,6 +248,13 @@ def new_blog(request):
             break
     # 筛选出时间前四的文档
     a1 = models.Article.objects.order_by('-article_time')
+    # 分页
+    paninator = Paginator(a1, 2)
+    pagenum = request.GET.get("pagenum")
+    if pagenum == None:
+        pagenum = 1
+
+    page = paninator.page(pagenum)
     a1_1_num = 0
     a1_1_list = []
     for a1_1 in a1:
@@ -261,7 +290,7 @@ def new_blog(request):
         # 该用户未收藏
 
         return render(request, 'one.html',
-                      {'art': a1, 'art_click': a_1_list, 'art_time': a1_1_list, 'art_num': a2_1_list,
+                      {'art': page, 'art_click': a_1_list, 'art_time': a1_1_list, 'art_num': a2_1_list,
                        'username': request.session.get("username"), 'sorts': sorts, 'mages': 'new',
                        'article_list': article_list})
     else:
@@ -274,7 +303,7 @@ def new_blog(request):
             # 存入一个列表
             article_list.append(article_one)
         return render(request, 'one.html',
-                      {'art': a1, 'art_click': a_1_list, 'art_time': a1_1_list, 'art_num': a2_1_list,
+                      {'art':page, 'art_click': a_1_list, 'art_time': a1_1_list, 'art_num': a2_1_list,
                        'username': request.session.get("username"), 'sorts': sorts, 'mages': 'new',
                        'article_list': article_list})
 def com_blog(request):
@@ -299,6 +328,13 @@ def com_blog(request):
             break
 
     a2 = models.Article.objects.order_by('-article_num')
+    # 分页
+    paninator = Paginator(a2, 2)
+    pagenum = request.GET.get("pagenum")
+    if pagenum == None:
+        pagenum = 1
+
+    page = paninator.page(pagenum)
     a2_1_num = 0
     a2_1_list = []
     for a2_1 in a2:
@@ -323,7 +359,7 @@ def com_blog(request):
         # 该用户未收藏
 
         return render(request, 'one.html',
-                      {'art': a2, 'art_click': a_1_list, 'art_time': a1_1_list, 'art_num': a2_1_list,
+                      {'art': page, 'art_click': a_1_list, 'art_time': a1_1_list, 'art_num': a2_1_list,
                        'username': request.session.get("username"), 'sorts': sorts, 'mages': 'com' ,
                        'article_list': article_list})
     else:
@@ -336,7 +372,7 @@ def com_blog(request):
             # 存入一个列表
             article_list.append(article_one)
         return render(request, 'one.html',
-                      {'art': a2, 'art_click': a_1_list, 'art_time': a1_1_list, 'art_num': a2_1_list,
+                      {'art': page, 'art_click': a_1_list, 'art_time': a1_1_list, 'art_num': a2_1_list,
                        'username': request.session.get("username"), 'sorts': sorts, 'mages': 'com',
                        'article_list': article_list})
 def find(request):
