@@ -58,8 +58,7 @@ def user_login(request):
             return render(request,'login.html',{'error_code':-1,"error_msg":'账号密码不对'})
 def user_logout(request):
     logout(request)
-    response=HttpResponse()
-    response.delete_cookie('username')
+
     return redirect('/')
 def update_pwd(request):
     username = request.session.get("username")
@@ -80,6 +79,5 @@ def update_pwd(request):
                 user_1.set_password(pwd2)
                 user_1.save()
                 logout(request)
-                response = HttpResponse()
-                response.delete_cookie('username')
+
                 return redirect('/')
