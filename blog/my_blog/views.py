@@ -94,22 +94,22 @@ def del_blog(request,id):
 def xiugai_user(request):
     username = request.session.get("username")
     c = User.objects.get(username=username)
-    user_f = c.user_file
-    user_f_nickname = user_f.nickname
+    user_f=c.user_file
+    user_f_nickname=user_f.nickname
     if request.method == 'GET':
         sorts = models.Sort.objects.all()
 
-        return render(request, 'xiugai_user.html', {"user_f": user_f, "sorts": sorts, 'usernam': username})
+        return render(request, 'xiugai_user.html', {"user_f":user_f,"sorts":sorts,'usernam':username})
     elif request.method == "POST":
 
-        age = request.POST["age"]
-        nickname = request.POST["nickname"]
-        if nickname != user_f_nickname:
+        age= request.POST["age"]
+        nickname= request.POST["nickname"]
+        if nickname!=user_f_nickname:
             try:
-                user_nick = models.User_file.objects.get(nickname=nickname)
+                user_nick=models.User_file.objects.get(nickname=nickname)
             except:
 
-                gender = request.POST["gender"]
+                gender= request.POST["gender"]
                 hobby_user = request.POST["hobby_user"]
                 pthone = request.POST["pthone"]
                 speciality = request.POST["speciality"]
@@ -121,7 +121,7 @@ def xiugai_user(request):
                     img_blog.save('./static/images/users/' + str(img_b))
 
                     user_f.user_img = img_b
-                    user_f.age = int(age)
+                    user_f.age=int(age)
                     user_f.nickname = nickname
                     user_f.gender = gender
                     user_f.hobby_user = hobby_user
@@ -132,8 +132,35 @@ def xiugai_user(request):
                     return redirect('/my_blog/my_blog/')
                 except:
 
-                    user_f.age = int(age)
-                    user_f.nickname = nickname
+                        user_f.age = int(age)
+                        user_f.nickname = nickname
+                        user_f.gender = gender
+                        user_f.hobby_user = hobby_user
+                        user_f.pthone = pthone
+                        user_f.speciality = speciality
+                        user_f.Personal_quotes = Personal_quotes
+                        user_f.save()
+                        return redirect('/my_blog/my_blog/')
+
+            else:
+                # return HttpResponseRedirect('/my_blog/xiugai_user/',{'ero':"昵称已被占用"})
+                return redirect('/my_blog/xiugai_user/',)
+                # return redirect(reverse('my_blog:xiugai_user',kwargs={'ero':"昵称已被占用"}))
+        else:
+                gender= request.POST["gender"]
+                hobby_user = request.POST["hobby_user"]
+                pthone = request.POST["pthone"]
+                speciality = request.POST["speciality"]
+                Personal_quotes = request.POST["Personal_quotes"]
+                try:
+                    img_b = request.FILES['where']
+
+                    img_blog = Image.open(img_b)
+                    img_blog.save('./static/images/users/' + str(img_b))
+
+                    user_f.user_img = img_b
+                    user_f.age=int(age)
+
                     user_f.gender = gender
                     user_f.hobby_user = hobby_user
                     user_f.pthone = pthone
@@ -141,44 +168,17 @@ def xiugai_user(request):
                     user_f.Personal_quotes = Personal_quotes
                     user_f.save()
                     return redirect('/my_blog/my_blog/')
+                except:
 
-            else:
-                # return HttpResponseRedirect('/my_blog/xiugai_user/',{'ero':"昵称已被占用"})
-                return redirect('/my_blog/xiugai_user/', )
-                # return redirect(reverse('my_blog:xiugai_user',kwargs={'ero':"昵称已被占用"}))
-        else:
-            gender = request.POST["gender"]
-            hobby_user = request.POST["hobby_user"]
-            pthone = request.POST["pthone"]
-            speciality = request.POST["speciality"]
-            Personal_quotes = request.POST["Personal_quotes"]
-            try:
-                img_b = request.FILES['where']
+                        user_f.age = int(age)
 
-                img_blog = Image.open(img_b)
-                img_blog.save('./static/images/users/' + str(img_b))
-
-                user_f.user_img = img_b
-                user_f.age = int(age)
-
-                user_f.gender = gender
-                user_f.hobby_user = hobby_user
-                user_f.pthone = pthone
-                user_f.speciality = speciality
-                user_f.Personal_quotes = Personal_quotes
-                user_f.save()
-                return redirect('/my_blog/my_blog/')
-            except:
-
-                user_f.age = int(age)
-
-                user_f.gender = gender
-                user_f.hobby_user = hobby_user
-                user_f.pthone = pthone
-                user_f.speciality = speciality
-                user_f.Personal_quotes = Personal_quotes
-                user_f.save()
-                return redirect('/my_blog/my_blog/')
+                        user_f.gender = gender
+                        user_f.hobby_user = hobby_user
+                        user_f.pthone = pthone
+                        user_f.speciality = speciality
+                        user_f.Personal_quotes = Personal_quotes
+                        user_f.save()
+                        return redirect('/my_blog/my_blog/')
 def my_blogcoll(request):
     username=request.session.get("username")
     c=User.objects.get(username=username).article_set.all()
