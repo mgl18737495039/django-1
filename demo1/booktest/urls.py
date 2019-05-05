@@ -1,7 +1,10 @@
-from django.urls import path
+from django.conf.urls import url
 
 from . import views
-
+app_name='booktest'
 urlpatterns = [
-    path('', views.index, name='index'),
+    url('index/$',views.index,name='index'),
+    url('list/$',views.list,name='list'),
+    url(r'^xiang/(\d+)/$',views.xiang,name='xiang'),
+    url(r'dele/(\d+)$',views.dele,name='dele')
 ]

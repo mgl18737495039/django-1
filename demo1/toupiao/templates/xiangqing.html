@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+	<form action="{%url 'toupiao:add_piao' id %}" method="post">
+		{% for i in t %}
+			<a href="">{{i.choice_name}}</a>  {{i.choice_num}}
+			<input type="radio" name="xuan" id="" value="{{i.id}}" />
+		{% empty %}
+			<h1>无选项</h1>
+		{% endfor %}
+		<input type="submit" value=""/>
+	</form>
+		<a href="{%url 'toupiao:add_choice' id%}">添加选项</a>
+</body>
+</html>

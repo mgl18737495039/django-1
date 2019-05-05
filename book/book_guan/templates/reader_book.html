@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block title %} 书目信息 {% endblock %}
+{% block link %} 
+	{% if book %}
+	<a href="{% url 'book_guan:reader'%}"> 返回 </a>
+	{% endif %}
+{% endblock %}
+
+{% block body %}
+	{% if error %}
+	<div class=error>
+	  <strong>Errror : </strong> {{error}}
+	</div>
+	{% endif %}
+	<h2> 书目信息 </h2>
+	{% if book %}
+	<li> ISBN            	{{book.id}} </li>
+	<li> 书名        		{{book.book_name}} </li>
+	<li> 作者        		{{book.book_author}} </li>
+	<li> 出版社     	{{book.book_banshe}} </li>
+	<li> 出版日期   	{{book.publish_date}} </li>
+	<li> 剩余图书       {{book.book_num}}</li>
+
+	{% endif %}
+	<div >
+	  <h2 > 借阅信息 </h2>
+	  {% if readers  %}
+		{%for i in readers %}
+	  <li> 借阅者姓名 :{{i.user.username}}</li>
+	  <li> 借阅日期  :{{i.jie_chu}}</li>
+		{% if  i.huan_book %}
+			{{i.huan_book}}
+			<li>状态 : 已还</li>
+		{%else%}
+
+			<li>状态 : 未还</li>
+		{%endif%}
+		{% endfor%}
+	  {% else %}
+	  <li> 无 </li>
+	  {% endif %}
+	  <form action="{%url 'book_guan:jie' book.id%}" method=post>
+	    <div class=actions>
+	      <input type=submit value="借阅">
+	    </div>
+	  </form>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {%for i in book.heroinfo_set.all%}
+        {{i.hname}}
+        {{i.hgemder}}
+        {{i.hcontent}}
+        {{i.hbook}}
+    {%empty%}
+        没有角色
+    {%endfor%}
+    <a href="{% url 'booktest:index' %}">返回</a>
+</body>
+</html>

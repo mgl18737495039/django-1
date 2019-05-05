@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^login/',views.user_login,name='user_login'),
     url(r'^logout/',views.user_logout,name='user_logout'),
     url(r'^update_pwd/',views.update_pwd,name='update_pwd'),
+    url(r'^active/(.*?)/$',views.active,name="active"),
 ]

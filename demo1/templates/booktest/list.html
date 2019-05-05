@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for i in list1 %}
+        <a href="{% url 'booktest:xiang' i.id %}">{{i.booktitle}}</a>
+    <a href="{%url 'booktest:dele' i.id%}">删除</a>
+
+    {%empty%}
+        没有书
+    {%endfor%}
+    <a href="{% url 'booktest:index' %}">返回</a>
+</body>
+</html>
