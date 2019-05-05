@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block title%} 读者登录 {% endblock%}
+{% block linkcss%}
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js" ></script>
+<script>
+            $(function(){
+                    $("#username").blur(function(){
+                    $.ajax({
+                        url:"/mgl/checkuser/",
+                        type:"post",
+                        data:{
+                            'username':$("#username").val(),
+                        },
+                        success:function (data) {
+                               $("#usernameinfo").text(data);
+                        }
+                    })
+                    })
+            })
+</script>
+{% endblock%}
+{% block body %}
+	<h2> 读者登录 </h2>
+	{% if error %}
+	<div class = error>
+	  <strong>Error : </strong>
+	</div>
+	{% endif%}
+	<form action="{%url 'book_guan:ajex_login'%}" method=post>
+	  <dl>
+	    <dt>用户名: </dt>
+	    <dd><input type="text" name="username" size=30 id="username" > </dd><span id="usernameinfo"></span>
+	    <dt>密码:	 </dt>
+	    <dd><input type="password" name="password" size=30> </dd>
+	  </dl>
+	  <div class=actions>
+	    <input type="submit" value="登录">
+	  </div>
+	</form>
+{% endblock %}

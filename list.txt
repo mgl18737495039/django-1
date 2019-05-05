@@ -1,0 +1,17 @@
+Django==2.1
+django-core==1.4.1
+django-haystack==2.8.1
+django-redis-cache==2.0.0
+django-redis-sessions==0.6.1
+django-tinymce==2.8.0
+image==1.5.27
+itsdangerous==1.1.0
+jieba==0.39
+mysqlclient==1.4.2.post1
+Pillow==6.0.0
+PyMySQL==0.9.3
+pytz==2019.1
+redis==3.2.1
+reverse==0.1.0
+sqlparse==0.3.0
+Whoosh==2.7.4
